@@ -35,7 +35,7 @@ jobs:
 
       - name: Install latest @typescript/native-preview
         working-directory: server
-        run: npm install @typescript/native-preview@latest
+        run: npm install @typescript/native-preview@latest --save-exact
 
       - name: Commit changes
         run: |
