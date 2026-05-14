@@ -2,5 +2,21 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "github>sublimelsp/renovate-preset"
+  ],
+  "npm": {
+    "enabled": false
+  },
+  "customManagers": [
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/^plugin\\.py$/"
+      ],
+      "matchStrings": [
+        "VSCODE_RELEASE_TAG = '(?<currentValue>.+?)'"
+      ],
+      "datasourceTemplate": "github-releases",
+      "packageNameTemplate": "microsoft/vscode"
+    }
   ]
 }
