@@ -1046,34 +1046,6 @@
                       "description": "Report style checks as warnings.",
                       "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.reportStyleChecksAsWarnings#` instead."
                     },
-                    "js/ts.suggestionActions.enabled": {
-                      "type": "boolean",
-                      "default": true,
-                      "description": "Enable/disable suggestion diagnostics for JavaScript and TypeScript files in the editor."
-                    },
-                    "javascript.suggestionActions.enabled": {
-                      "type": "boolean",
-                      "default": true,
-                      "description": "Enable/disable suggestion diagnostics for JavaScript files in the editor.",
-                      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.suggestionActions.enabled#` instead."
-                    },
-                    "typescript.suggestionActions.enabled": {
-                      "type": "boolean",
-                      "default": true,
-                      "description": "Enable/disable suggestion diagnostics for TypeScript files in the editor.",
-                      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.suggestionActions.enabled#` instead."
-                    },
-                    "js/ts.tsserver.experimental.enableProjectDiagnostics": {
-                      "type": "boolean",
-                      "default": false,
-                      "description": "Enables project wide error reporting."
-                    },
-                    "typescript.tsserver.experimental.enableProjectDiagnostics": {
-                      "type": "boolean",
-                      "default": false,
-                      "description": "Enables project wide error reporting.",
-                      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.tsserver.experimental.enableProjectDiagnostics#` instead."
-                    },
                     "js/ts.implicitProjectConfig.module": {
                       "type": "string",
                       "markdownDescription": "Sets the module system for the program. See more: https://www.typescriptlang.org/tsconfig#module.",

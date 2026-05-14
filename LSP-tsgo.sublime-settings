@@ -203,16 +203,6 @@
 		"js/ts.reportStyleChecksAsWarnings": true,
 		// Report style checks as warnings.
 		"typescript.reportStyleChecksAsWarnings": true,
-		// Enable/disable suggestion diagnostics for JavaScript and TypeScript files in the editor.
-		"js/ts.suggestionActions.enabled": true,
-		// Enable/disable suggestion diagnostics for JavaScript files in the editor.
-		"javascript.suggestionActions.enabled": true,
-		// Enable/disable suggestion diagnostics for TypeScript files in the editor.
-		"typescript.suggestionActions.enabled": true,
-		// Enables project wide error reporting.
-		"js/ts.tsserver.experimental.enableProjectDiagnostics": false,
-		// Enables project wide error reporting.
-		"typescript.tsserver.experimental.enableProjectDiagnostics": false,
 		// Sets the module system for the program. See more: https://www.typescriptlang.org/tsconfig#module.
 		"js/ts.implicitProjectConfig.module": "ESNext",
 		// Set target JavaScript language version for emitted JavaScript and include library declarations. See more: https://www.typescriptlang.org/tsconfig#target.
