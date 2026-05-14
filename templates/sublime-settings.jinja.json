@@ -1,0 +1,17 @@
+{
+	"enabled": false,
+	"settings": {
+		{{ settings | indent('\t\t') }}
+	},
+	"command": [
+		"${node_bin}",
+		"${server_path}",
+		"--lsp",
+		"-stdio"
+	],
+	"selector": "source.js, source.jsx, source.ts, source.tsx",
+	"schemes": [
+		"file", // regular files
+		"buffer", // in-memory buffers
+	],
+}

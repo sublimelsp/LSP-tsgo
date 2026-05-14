@@ -1,0 +1,79 @@
+{
+  "contributions": {
+    "settings": [
+      {
+        "file_patterns": [
+          "/LSP-tsgo.sublime-settings"
+        ],
+        "schema": {
+          "$id": "sublime://settings/LSP-tsgo",
+          "definitions": {
+            "PluginConfig": {
+              "properties": {
+                "settings": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {{ settings | indent(18) }}
+                }
+              }
+            }
+          },
+          "type": "object",
+          "allOf": [
+            {
+              "$ref": "sublime://settings/LSP-plugin-base"
+            },
+            {
+              "$ref": "sublime://settings/LSP-tsgo#/definitions/PluginConfig"
+            }
+          ]
+        }
+      },
+      {
+        "file_patterns": [
+          "/*.sublime-project"
+        ],
+        "schema": {
+          "properties": {
+            "settings": {
+              "properties": {
+                "LSP": {
+                  "properties": {
+                    "LSP-tsgo": {
+                      "$ref": "sublime://settings/LSP-tsgo#/definitions/PluginConfig"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "file_patterns": [
+          "LSP.sublime-settings"
+        ],
+        "schema": {
+          "properties": {
+            "lsp_code_actions_on_save": {
+              "properties": {
+                "source.fixAll": {
+                  "type": "boolean"
+                },
+                "source.organizeImports": {
+                  "type": "boolean"
+                },
+                "source.removeUnusedImports": {
+                  "type": "boolean"
+                },
+                "source.sortImports": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      }
+    ]
+  }
+}
