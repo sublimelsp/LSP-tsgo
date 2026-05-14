@@ -5,10 +5,6 @@
 		"js/ts.locale": "auto",
 		// Sets the locale used to report JavaScript and TypeScript errors. Defaults to use VS Code's locale.
 		"typescript.locale": "auto",
-		// Controls auto detection of tsc tasks.
-		"js/ts.tsc.autoDetect": "on",
-		// Controls auto detection of tsc tasks.
-		"typescript.tsc.autoDetect": "on",
 		// Preferred quote style to use for Quick Fixes.
 		"js/ts.preferences.quoteStyle": "auto",
 		// Preferred quote style to use for Quick Fixes.

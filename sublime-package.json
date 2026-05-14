@@ -77,41 +77,6 @@
                       "markdownDescription": "Sets the locale used to report JavaScript and TypeScript errors. Defaults to use VS Code's locale.",
                       "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.locale#` instead."
                     },
-                    "js/ts.tsc.autoDetect": {
-                      "type": "string",
-                      "default": "on",
-                      "enum": [
-                        "on",
-                        "off",
-                        "build",
-                        "watch"
-                      ],
-                      "markdownEnumDescriptions": [
-                        "Create both build and watch tasks.",
-                        "Disable this feature.",
-                        "Only create single run compile tasks.",
-                        "Only create compile and watch tasks."
-                      ],
-                      "description": "Controls auto detection of tsc tasks."
-                    },
-                    "typescript.tsc.autoDetect": {
-                      "type": "string",
-                      "default": "on",
-                      "enum": [
-                        "on",
-                        "off",
-                        "build",
-                        "watch"
-                      ],
-                      "markdownEnumDescriptions": [
-                        "Create both build and watch tasks.",
-                        "Disable this feature.",
-                        "Only create single run compile tasks.",
-                        "Only create compile and watch tasks."
-                      ],
-                      "description": "Controls auto detection of tsc tasks.",
-                      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.tsc.autoDetect#` instead."
-                    },
                     "js/ts.preferences.quoteStyle": {
                       "type": "string",
                       "enum": [
