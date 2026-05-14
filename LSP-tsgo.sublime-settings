@@ -1,5 +1,4 @@
 {
-	"enabled": false,
 	"settings": {
 		// Sets the locale used to report JavaScript and TypeScript errors. Defaults to use VS Code's locale.
 		"js/ts.locale": "auto",
