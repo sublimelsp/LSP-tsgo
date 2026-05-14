@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths:
-      - 'plugin.py'
+      - 'server/package.json'
   workflow_dispatch:
 
 permissions:
@@ -14,33 +14,5 @@ permissions:
   contents: write
 
 jobs:
-  check-settings:
-    uses: sublimelsp/workflows/.github/workflows/changed-settings.yaml@v2
-    with:
-      version_file: 'plugin.py'
-      version_regexp: "VSCODE_RELEASE_TAG = '([^']+)'"
-
-  update-server:
-    needs: check-settings
-    if: needs.check-settings.outputs.version_changed == 'true'
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v6
-        with:
-          ref: ${{ github.head_ref }}
-
-      - uses: actions/setup-node@v6
-        with:
-          node-version: 'lts/*'
-
-      - name: Install latest @typescript/native-preview
-        working-directory: server
-        run: npm install @typescript/native-preview@latest --save-exact
-
-      - name: Commit changes
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add server/package.json server/package-lock.json
-          git diff --cached --quiet || git commit -m "chore: update @typescript/native-preview to latest"
-          git push
+  update-settings:
+    uses: sublimelsp/workflows/.github/workflows/update-settings.yaml@v2

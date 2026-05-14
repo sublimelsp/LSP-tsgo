@@ -8,7 +8,6 @@ from sublime_lib import ResourcePath
 from typing import final
 from typing_extensions import override
 
-VSCODE_RELEASE_TAG = '1.119.0'
 
 @final
 class LspTsgoPlugin(LspPlugin):
