@@ -16,6 +16,5 @@ jobs:
   check-settings:
     uses: sublimelsp/workflows/.github/workflows/changed-settings.yaml@v2
     with:
-      # JQ query to get all configuration settings converted to a flat list and with null values filtered out.
       version_file: 'plugin.py'
       version_regexp: "VSCODE_RELEASE_TAG = '([^']+)'"
