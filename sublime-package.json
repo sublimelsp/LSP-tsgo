@@ -1,0 +1,1882 @@
+{
+  "contributions": {
+    "settings": [
+      {
+        "file_patterns": [
+          "/LSP-tsgo.sublime-settings"
+        ],
+        "schema": {
+          "$id": "sublime://settings/LSP-tsgo",
+          "definitions": {
+            "PluginConfig": {
+              "properties": {
+                "settings": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "js/ts.locale": {
+                      "type": "string",
+                      "default": "auto",
+                      "enum": [
+                        "auto",
+                        "de",
+                        "es",
+                        "en",
+                        "fr",
+                        "it",
+                        "ja",
+                        "ko",
+                        "ru",
+                        "zh-CN",
+                        "zh-TW"
+                      ],
+                      "enumDescriptions": [
+                        "Use VS Code's configured display language.",
+                        "Deutsch",
+                        "espa\u00f1ol",
+                        "English",
+                        "fran\u00e7ais",
+                        "italiano",
+                        "\u65e5\u672c\u8a9e",
+                        "\ud55c\uad6d\uc5b4",
+                        "\u0440\u0443\u0441\u0441\u043a\u0438\u0439",
+                        "\u4e2d\u6587(\u7b80\u4f53)",
+                        "\u4e2d\u6587(\u7e41\u9ad4)"
+                      ],
+                      "markdownDescription": "Sets the locale used to report JavaScript and TypeScript errors. Defaults to use VS Code's locale."
+                    },
+                    "typescript.locale": {
+                      "type": "string",
+                      "default": "auto",
+                      "enum": [
+                        "auto",
+                        "de",
+                        "es",
+                        "en",
+                        "fr",
+                        "it",
+                        "ja",
+                        "ko",
+                        "ru",
+                        "zh-CN",
+                        "zh-TW"
+                      ],
+                      "enumDescriptions": [
+                        "Use VS Code's configured display language.",
+                        "Deutsch",
+                        "espa\u00f1ol",
+                        "English",
+                        "fran\u00e7ais",
+                        "italiano",
+                        "\u65e5\u672c\u8a9e",
+                        "\ud55c\uad6d\uc5b4",
+                        "\u0440\u0443\u0441\u0441\u043a\u0438\u0439",
+                        "\u4e2d\u6587(\u7b80\u4f53)",
+                        "\u4e2d\u6587(\u7e41\u9ad4)"
+                      ],
+                      "markdownDescription": "Sets the locale used to report JavaScript and TypeScript errors. Defaults to use VS Code's locale.",
+                      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.locale#` instead."
+                    },
+                    "js/ts.preferences.quoteStyle": {
+                      "type": "string",
+                      "enum": [
+                        "auto",
+                        "single",
+                        "double"
+                      ],
+                      "default": "auto",
+                      "markdownDescription": "Preferred quote style to use for Quick Fixes.",
+                      "markdownEnumDescriptions": [
+                        "Infer quote type from existing code",
+                        "Always use single quotes: `'`",
+                        "Always use double quotes: `\"`"
+                      ]
+                    },
+                    "javascript.preferences.quoteStyle": {
+                      "type": "string",
+                      "enum": [
+                        "auto",
+                        "single",
+                        "double"
+                      ],
+                      "default": "auto",
+                      "markdownDescription": "Preferred quote style to use for Quick Fixes.",
+                      "markdownEnumDescriptions": [
+                        "Infer quote type from existing code",
+                        "Always use single quotes: `'`",
+                        "Always use double quotes: `\"`"
+                      ],
+                      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.preferences.quoteStyle#` instead."
+                    },
+                    "typescript.preferences.quoteStyle": {
+                      "type": "string",
+                      "enum": [
+                        "auto",
+                        "single",
+                        "double"
+                      ],
+                      "default": "auto",
+                      "markdownDescription": "Preferred quote style to use for Quick Fixes.",
+                      "markdownEnumDescriptions": [
+                        "Infer quote type from existing code",
+                        "Always use single quotes: `'`",
+                        "Always use double quotes: `\"`"
+                      ],
+                      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.preferences.quoteStyle#` instead."
+                    },
+                    "js/ts.preferences.importModuleSpecifier": {
+                      "type": "string",
+                      "enum": [
+                        "shortest",
+                        "relative",
+                        "non-relative",
+                        "project-relative"
+                      ],
+                      "markdownEnumDescriptions": [
+                        "Prefers a non-relative import only if one is available that has fewer path segments than a relative import.",
+                        "Prefers a relative path to the imported file location.",
+                        "Prefers a non-relative import based on the `baseUrl` or `paths` configured in your `jsconfig.json` / `tsconfig.json`.",
+                        "Prefers a non-relative import only if the relative import path would leave the package or project directory."
+                      ],
+                      "default": "shortest",
+                      "description": "Preferred path style for auto imports."
+                    },
+                    "javascript.preferences.importModuleSpecifier": {
+                      "type": "string",
+                      "enum": [
+                        "shortest",
+                        "relative",
+                        "non-relative",
+                        "project-relative"
+                      ],
+                      "markdownEnumDescriptions": [
+                        "Prefers a non-relative import only if one is available that has fewer path segments than a relative import.",
+                        "Prefers a relative path to the imported file location.",
+                        "Prefers a non-relative import based on the `baseUrl` or `paths` configured in your `jsconfig.json` / `tsconfig.json`.",
+                        "Prefers a non-relative import only if the relative import path would leave the package or project directory."
+                      ],
+                      "default": "shortest",
+                      "description": "Preferred path style for auto imports.",
+                      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.preferences.importModuleSpecifier#` instead."
+                    },
+                    "typescript.preferences.importModuleSpecifier": {
+                      "type": "string",
+                      "enum": [
+                        "shortest",
+                        "relative",
+                        "non-relative",
+                        "project-relative"
+                      ],
+                      "markdownEnumDescriptions": [
+                        "Prefers a non-relative import only if one is available that has fewer path segments than a relative import.",
+                        "Prefers a relative path to the imported file location.",
+                        "Prefers a non-relative import based on the `baseUrl` or `paths` configured in your `jsconfig.json` / `tsconfig.json`.",
+                        "Prefers a non-relative import only if the relative import path would leave the package or project directory."
+                      ],
+                      "default": "shortest",
+                      "description": "Preferred path style for auto imports.",
+                      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.preferences.importModuleSpecifier#` instead."
+                    },
+                    "js/ts.preferences.importModuleSpecifierEnding": {
+                      "type": "string",
+                      "enum": [
+                        "auto",
+                        "minimal",
+                        "index",
+                        "js"
+                      ],
+                      "enumItemLabels": [
+                        null,
+                        null,
+                        null,
+                        ".js / .ts"
+                      ],
+                      "markdownEnumDescriptions": [
+                        "Use project settings to select a default.",
+                        "Shorten `./component/index.js` to `./component`.",
+                        "Shorten `./component/index.js` to `./component/index`.",
+                        "Do not shorten path endings; include the `.js` or `.ts` extension."
+                      ],
+                      "default": "auto",
+                      "description": "Preferred path ending for auto imports."
+                    },
+                    "javascript.preferences.importModuleSpecifierEnding": {
+                      "type": "string",
+                      "enum": [
+                        "auto",
+                        "minimal",
+                        "index",
+                        "js"
+                      ],
+                      "enumItemLabels": [
+                        null,
+                        null,
+                        null,
+                        ".js / .ts"
+                      ],
+                      "markdownEnumDescriptions": [
+                        "Use project settings to select a default.",
+                        "Shorten `./component/index.js` to `./component`.",
+                        "Shorten `./component/index.js` to `./component/index`.",
+                        "Do not shorten path endings; include the `.js` or `.ts` extension."
+                      ],
+                      "default": "auto",
+                      "description": "Preferred path ending for auto imports.",
+                      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.preferences.importModuleSpecifierEnding#` instead."
+                    },
+                    "typescript.preferences.importModuleSpecifierEnding": {
+                      "type": "string",
+                      "enum": [
+                        "auto",
+                        "minimal",
+                        "index",
+                        "js"
+                      ],
+                      "enumItemLabels": [
+                        null,
+                        null,
+                        null,
+                        ".js / .ts"
+                      ],
+                      "markdownEnumDescriptions": [
+                        "Use project settings to select a default.",
+                        "Shorten `./component/index.js` to `./component`.",
+                        "Shorten `./component/index.js` to `./component/index`.",
+                        "Do not shorten path endings; include the `.js` or `.ts` extension."
+                      ],
+                      "default": "auto",
+                      "description": "Preferred path ending for auto imports.",
+                      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.preferences.importModuleSpecifierEnding#` instead."
+                    },
+                    "js/ts.preferences.jsxAttributeCompletionStyle": {
+                      "type": "string",
+                      "enum": [
+                        "auto",
+                        "braces",
+                        "none"
+                      ],
+                      "markdownEnumDescriptions": [
+                        "Insert `={}` or `=\"\"` after attribute names based on the prop type. See `#js/ts.preferences.quoteStyle#` to control the type of quotes used for string attributes.",
+                        "Insert `={}` after attribute names.",
+                        "Only insert attribute names."
+                      ],
+                      "default": "auto",
+                      "description": "Preferred style for JSX attribute completions."
+                    },
+                    "javascript.preferences.jsxAttributeCompletionStyle": {
+                      "type": "string",
+                      "enum": [
+                        "auto",
+                        "braces",
+                        "none"
+                      ],
+                      "markdownEnumDescriptions": [
+                        "Insert `={}` or `=\"\"` after attribute names based on the prop type. See `#javascript.preferences.quoteStyle#` to control the type of quotes used for string attributes.",
+                        "Insert `={}` after attribute names.",
+                        "Only insert attribute names."
+                      ],
+                      "default": "auto",
+                      "description": "Preferred style for JSX attribute completions.",
+                      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.preferences.jsxAttributeCompletionStyle#` instead."
+                    },
+                    "typescript.preferences.jsxAttributeCompletionStyle": {
+                      "type": "string",
+                      "enum": [
+                        "auto",
+                        "braces",
+                        "none"
+                      ],
+                      "markdownEnumDescriptions": [
+                        "Insert `={}` or `=\"\"` after attribute names based on the prop type. See `#typescript.preferences.quoteStyle#` to control the type of quotes used for string attributes.",
+                        "Insert `={}` after attribute names.",
+                        "Only insert attribute names."
+                      ],
+                      "default": "auto",
+                      "description": "Preferred style for JSX attribute completions.",
+                      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.preferences.jsxAttributeCompletionStyle#` instead."
+                    },
+                    "js/ts.preferences.includePackageJsonAutoImports": {
+                      "type": "string",
+                      "enum": [
+                        "auto",
+                        "on",
+                        "off"
+                      ],
+                      "enumDescriptions": [
+                        "Search dependencies based on estimated performance impact.",
+                        "Always search dependencies.",
+                        "Never search dependencies."
+                      ],
+                      "default": "auto",
+                      "markdownDescription": "Enable/disable searching `package.json` dependencies for available auto imports."
+                    },
+                    "typescript.preferences.includePackageJsonAutoImports": {
+                      "type": "string",
+                      "enum": [
+                        "auto",
+                        "on",
+                        "off"
+                      ],
+                      "enumDescriptions": [
+                        "Search dependencies based on estimated performance impact.",
+                        "Always search dependencies.",
+                        "Never search dependencies."
+                      ],
+                      "default": "auto",
+                      "markdownDescription": "Enable/disable searching `package.json` dependencies for available auto imports.",
+                      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.preferences.includePackageJsonAutoImports#` instead."
+                    },
+                    "js/ts.preferences.autoImportFileExcludePatterns": {
+                      "type": [
+                        "array",
+                        "null"
+                      ],
+                      "items": {
+                        "type": "string"
+                      },
+                      "markdownDescription": "Specify glob patterns of files to exclude from auto imports. Relative paths are resolved relative to the workspace root. Patterns are evaluated using tsconfig.json [`exclude`](https://www.typescriptlang.org/tsconfig#exclude) semantics."
+                    },
+                    "javascript.preferences.autoImportFileExcludePatterns": {
+                      "type": [
+                        "array",
+                        "null"
+                      ],
+                      "items": {
+                        "type": "string"
+                      },
+                      "markdownDescription": "Specify glob patterns of files to exclude from auto imports. Relative paths are resolved relative to the workspace root. Patterns are evaluated using tsconfig.json [`exclude`](https://www.typescriptlang.org/tsconfig#exclude) semantics.",
+                      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.preferences.autoImportFileExcludePatterns#` instead."
+                    },
+                    "typescript.preferences.autoImportFileExcludePatterns": {
+                      "type": [
+                        "array",
+                        "null"
+                      ],
+                      "items": {
+                        "type": "string"
+                      },
+                      "markdownDescription": "Specify glob patterns of files to exclude from auto imports. Relative paths are resolved relative to the workspace root. Patterns are evaluated using tsconfig.json [`exclude`](https://www.typescriptlang.org/tsconfig#exclude) semantics.",
+                      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.preferences.autoImportFileExcludePatterns#` instead."
+                    },
+                    "js/ts.preferences.autoImportSpecifierExcludeRegexes": {
+                      "type": [
+                        "array",
+                        "null"
+                      ],
+                      "items": {
+                        "type": "string"
+                      },
+                      "markdownDescription": "Specify regular expressions to exclude auto imports with matching import specifiers. Examples:\n\n- `^node:`\n- `lib/internal` (slashes don't need to be escaped...)\n- `/lib\\/internal/i` (...unless including surrounding slashes for `i` or `u` flags)\n- `^lodash$` (only allow subpath imports from lodash)"
+                    },
+                    "javascript.preferences.autoImportSpecifierExcludeRegexes": {
+                      "type": [
+                        "array",
+                        "null"
+                      ],
+                      "items": {
+                        "type": "string"
+                      },
+                      "markdownDescription": "Specify regular expressions to exclude auto imports with matching import specifiers. Examples:\n\n- `^node:`\n- `lib/internal` (slashes don't need to be escaped...)\n- `/lib\\/internal/i` (...unless including surrounding slashes for `i` or `u` flags)\n- `^lodash$` (only allow subpath imports from lodash)",
+                      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.preferences.autoImportSpecifierExcludeRegexes#` instead."
+                    },
+                    "typescript.preferences.autoImportSpecifierExcludeRegexes": {
+                      "type": [
+                        "array",
+                        "null"
+                      ],
+                      "items": {
+                        "type": "string"
+                      },
+                      "markdownDescription": "Specify regular expressions to exclude auto imports with matching import specifiers. Examples:\n\n- `^node:`\n- `lib/internal` (slashes don't need to be escaped...)\n- `/lib\\/internal/i` (...unless including surrounding slashes for `i` or `u` flags)\n- `^lodash$` (only allow subpath imports from lodash)",
+                      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.preferences.autoImportSpecifierExcludeRegexes#` instead."
+                    },
+                    "js/ts.preferences.preferTypeOnlyAutoImports": {
+                      "type": "boolean",
+                      "default": false,
+                      "markdownDescription": "Include the `type` keyword in auto-imports whenever possible. Requires using TypeScript 5.3+ in the workspace."
+                    },
+                    "typescript.preferences.preferTypeOnlyAutoImports": {
+                      "type": "boolean",
+                      "default": false,
+                      "markdownDescription": "Include the `type` keyword in auto-imports whenever possible. Requires using TypeScript 5.3+ in the workspace.",
+                      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.preferences.preferTypeOnlyAutoImports#` instead."
+                    },
+                    "js/ts.preferences.useAliasesForRenames": {
+                      "type": "boolean",
+                      "default": true,
+                      "description": "Enable/disable introducing aliases for object shorthand properties during renames."
+                    },
+                    "javascript.preferences.useAliasesForRenames": {
+                      "type": "boolean",
+                      "default": true,
+                      "description": "Enable/disable introducing aliases for object shorthand properties during renames.",
+                      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.preferences.useAliasesForRenames#` instead."
+                    },
+                    "typescript.preferences.useAliasesForRenames": {
+                      "type": "boolean",
+                      "default": true,
+                      "description": "Enable/disable introducing aliases for object shorthand properties during renames.",
+                      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.preferences.useAliasesForRenames#` instead."
+                    },
+                    "js/ts.preferences.renameMatchingJsxTags": {
+                      "type": "boolean",
+                      "default": true,
+                      "description": "When on a JSX tag, try to rename the matching tag instead of renaming the symbol. Requires using TypeScript 5.1+ in the workspace."
+                    },
+                    "javascript.preferences.renameMatchingJsxTags": {
+                      "type": "boolean",
+                      "default": true,
+                      "description": "When on a JSX tag, try to rename the matching tag instead of renaming the symbol. Requires using TypeScript 5.1+ in the workspace.",
+                      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.preferences.renameMatchingJsxTags#` instead."
+                    },
+                    "typescript.preferences.renameMatchingJsxTags": {
+                      "type": "boolean",
+                      "default": true,
+                      "description": "When on a JSX tag, try to rename the matching tag instead of renaming the symbol. Requires using TypeScript 5.1+ in the workspace.",
+                      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.preferences.renameMatchingJsxTags#` instead."
+                    },
+                    "js/ts.preferences.organizeImports": {
+                      "type": "object",
+                      "markdownDescription": "Advanced preferences that control how imports are ordered.",
+                      "properties": {
+                        "caseSensitivity": {
+                          "type": "string",
+                          "markdownDescription": "Specifies how imports should be sorted with regards to case-sensitivity. If `auto` or unspecified, we will detect the case-sensitivity per file",
+                          "enum": [
+                            "auto",
+                            "caseInsensitive",
+                            "caseSensitive"
+                          ],
+                          "markdownEnumDescriptions": [
+                            "Detect case-sensitivity for import sorting.",
+                            "Sort imports case-insensitively.",
+                            "Sort imports case-sensitively."
+                          ],
+                          "default": "auto"
+                        },
+                        "typeOrder": {
+                          "type": "string",
+                          "markdownDescription": "Specify how type-only named imports should be sorted.",
+                          "enum": [
+                            "auto",
+                            "last",
+                            "inline",
+                            "first"
+                          ],
+                          "default": "auto",
+                          "markdownEnumDescriptions": [
+                            "Detect where type-only named imports should be sorted.",
+                            "Type only named imports are sorted to the end of the import list. E.g. `import { B, Z, type A, type Y } from 'module';`",
+                            "Named imports are sorted by name only. E.g. `import { type A, B, type Y, Z } from 'module';`",
+                            "Type only named imports are sorted to the beginning of the import list. E.g. `import { type A, type Y, B, Z } from 'module';`"
+                          ]
+                        },
+                        "unicodeCollation": {
+                          "type": "string",
+                          "markdownDescription": "Specify whether to sort imports using Unicode or Ordinal collation.",
+                          "enum": [
+                            "ordinal",
+                            "unicode"
+                          ],
+                          "markdownEnumDescriptions": [
+                            "Sort imports using the numeric value of each code point.",
+                            "Sort imports using the Unicode code collation."
+                          ],
+                          "default": "ordinal"
+                        },
+                        "locale": {
+                          "type": "string",
+                          "markdownDescription": "Requires `organizeImports.unicodeCollation: 'unicode'`. Overrides the locale used for collation. Specify `auto` to use the UI locale."
+                        },
+                        "numericCollation": {
+                          "type": "boolean",
+                          "markdownDescription": "Requires `organizeImports.unicodeCollation: 'unicode'`. Sort numeric strings by integer value."
+                        },
+                        "accentCollation": {
+                          "type": "boolean",
+                          "markdownDescription": "Requires `organizeImports.unicodeCollation: 'unicode'`. Compare characters with diacritical marks as unequal to base character."
+                        },
+                        "caseFirst": {
+                          "type": "string",
+                          "markdownDescription": "Requires `organizeImports.unicodeCollation: 'unicode'`, and `organizeImports.caseSensitivity` is not `caseInsensitive`. Indicates whether upper-case will sort before lower-case.",
+                          "enum": [
+                            "default",
+                            "upper",
+                            "lower"
+                          ],
+                          "markdownEnumDescriptions": [
+                            "Default order given by `locale`.",
+                            "Upper-case comes before lower-case. E.g. ` A, a, B, b`.",
+                            "Lower-case comes before upper-case. E.g.` a, A, z, Z`."
+                          ],
+                          "default": "default"
+                        }
+                      }
+                    },
+                    "javascript.preferences.organizeImports": {
+                      "type": "object",
+                      "markdownDescription": "Advanced preferences that control how imports are ordered.",
+                      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.preferences.organizeImports#` instead.",
+                      "properties": {
+                        "caseSensitivity": {
+                          "type": "string",
+                          "markdownDescription": "Specifies how imports should be sorted with regards to case-sensitivity. If `auto` or unspecified, we will detect the case-sensitivity per file",
+                          "enum": [
+                            "auto",
+                            "caseInsensitive",
+                            "caseSensitive"
+                          ],
+                          "markdownEnumDescriptions": [
+                            "Detect case-sensitivity for import sorting.",
+                            "Sort imports case-insensitively.",
+                            "Sort imports case-sensitively."
+                          ],
+                          "default": "auto"
+                        },
+                        "typeOrder": {
+                          "type": "string",
+                          "markdownDescription": "Specify how type-only named imports should be sorted.",
+                          "enum": [
+                            "auto",
+                            "last",
+                            "inline",
+                            "first"
+                          ],
+                          "default": "auto",
+                          "markdownEnumDescriptions": [
+                            "Detect where type-only named imports should be sorted.",
+                            "Type only named imports are sorted to the end of the import list. E.g. `import { B, Z, type A, type Y } from 'module';`",
+                            "Named imports are sorted by name only. E.g. `import { type A, B, type Y, Z } from 'module';`",
+                            "Type only named imports are sorted to the beginning of the import list. E.g. `import { type A, type Y, B, Z } from 'module';`"
+                          ]
+                        },
+                        "unicodeCollation": {
+                          "type": "string",
+                          "markdownDescription": "Specify whether to sort imports using Unicode or Ordinal collation.",
+                          "enum": [
+                            "ordinal",
+                            "unicode"
+                          ],
+                          "markdownEnumDescriptions": [
+                            "Sort imports using the numeric value of each code point.",
+                            "Sort imports using the Unicode code collation."
+                          ],
+                          "default": "ordinal"
+                        },
+                        "locale": {
+                          "type": "string",
+                          "markdownDescription": "Requires `organizeImports.unicodeCollation: 'unicode'`. Overrides the locale used for collation. Specify `auto` to use the UI locale."
+                        },
+                        "numericCollation": {
+                          "type": "boolean",
+                          "markdownDescription": "Requires `organizeImports.unicodeCollation: 'unicode'`. Sort numeric strings by integer value."
+                        },
+                        "accentCollation": {
+                          "type": "boolean",
+                          "markdownDescription": "Requires `organizeImports.unicodeCollation: 'unicode'`. Compare characters with diacritical marks as unequal to base character."
+                        },
+                        "caseFirst": {
+                          "type": "string",
+                          "markdownDescription": "Requires `organizeImports.unicodeCollation: 'unicode'`, and `organizeImports.caseSensitivity` is not `caseInsensitive`. Indicates whether upper-case will sort before lower-case.",
+                          "enum": [
+                            "default",
+                            "upper",
+                            "lower"
+                          ],
+                          "markdownEnumDescriptions": [
+                            "Default order given by `locale`.",
+                            "Upper-case comes before lower-case. E.g. ` A, a, B, b`.",
+                            "Lower-case comes before upper-case. E.g.` a, A, z, Z`."
+                          ],
+                          "default": "default"
+                        }
+                      }
+                    },
+                    "typescript.preferences.organizeImports": {
+                      "type": "object",
+                      "markdownDescription": "Advanced preferences that control how imports are ordered.",
+                      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.preferences.organizeImports#` instead.",
+                      "properties": {
+                        "caseSensitivity": {
+                          "type": "string",
+                          "markdownDescription": "Specifies how imports should be sorted with regards to case-sensitivity. If `auto` or unspecified, we will detect the case-sensitivity per file",
+                          "enum": [
+                            "auto",
+                            "caseInsensitive",
+                            "caseSensitive"
+                          ],
+                          "markdownEnumDescriptions": [
+                            "Detect case-sensitivity for import sorting.",
+                            "%typescript.preferences.organizeImports.caseSensitivity.insensitive",
+                            "Sort imports case-sensitively."
+                          ],
+                          "default": "auto"
+                        },
+                        "typeOrder": {
+                          "type": "string",
+                          "markdownDescription": "Specify how type-only named imports should be sorted.",
+                          "enum": [
+                            "auto",
+                            "last",
+                            "inline",
+                            "first"
+                          ],
+                          "default": "auto",
+                          "markdownEnumDescriptions": [
+                            "Detect where type-only named imports should be sorted.",
+                            "Type only named imports are sorted to the end of the import list. E.g. `import { B, Z, type A, type Y } from 'module';`",
+                            "Named imports are sorted by name only. E.g. `import { type A, B, type Y, Z } from 'module';`",
+                            "Type only named imports are sorted to the beginning of the import list. E.g. `import { type A, type Y, B, Z } from 'module';`"
+                          ]
+                        },
+                        "unicodeCollation": {
+                          "type": "string",
+                          "markdownDescription": "Specify whether to sort imports using Unicode or Ordinal collation.",
+                          "enum": [
+                            "ordinal",
+                            "unicode"
+                          ],
+                          "markdownEnumDescriptions": [
+                            "Sort imports using the numeric value of each code point.",
+                            "Sort imports using the Unicode code collation."
+                          ],
+                          "default": "ordinal"
+                        },
+                        "locale": {
+                          "type": "string",
+                          "markdownDescription": "Requires `organizeImports.unicodeCollation: 'unicode'`. Overrides the locale used for collation. Specify `auto` to use the UI locale."
+                        },
+                        "numericCollation": {
+                          "type": "boolean",
+                          "markdownDescription": "Requires `organizeImports.unicodeCollation: 'unicode'`. Sort numeric strings by integer value."
+                        },
+                        "accentCollation": {
+                          "type": "boolean",
+                          "markdownDescription": "Requires `organizeImports.unicodeCollation: 'unicode'`. Compare characters with diacritical marks as unequal to base character."
+                        },
+                        "caseFirst": {
+                          "type": "string",
+                          "markdownDescription": "Requires `organizeImports.unicodeCollation: 'unicode'`, and `organizeImports.caseSensitivity` is not `caseInsensitive`. Indicates whether upper-case will sort before lower-case.",
+                          "enum": [
+                            "default",
+                            "upper",
+                            "lower"
+                          ],
+                          "markdownEnumDescriptions": [
+                            "Default order given by `locale`.",
+                            "Upper-case comes before lower-case. E.g. ` A, a, B, b`.",
+                            "Lower-case comes before upper-case. E.g.` a, A, z, Z`."
+                          ],
+                          "default": "default"
+                        }
+                      }
+                    },
+                    "js/ts.format.enabled": {
+                      "type": "boolean",
+                      "default": true,
+                      "description": "Enable/disable the default JavaScript and TypeScript formatter."
+                    },
+                    "javascript.format.enable": {
+                      "type": "boolean",
+                      "default": true,
+                      "description": "Enable/disable default JavaScript formatter.",
+                      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.format.enabled#` instead."
+                    },
+                    "typescript.format.enable": {
+                      "type": "boolean",
+                      "default": true,
+                      "description": "Enable/disable default TypeScript formatter.",
+                      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.format.enabled#` instead."
+                    },
+                    "js/ts.format.insertSpaceAfterCommaDelimiter": {
+                      "type": "boolean",
+                      "default": true,
+                      "description": "Defines space handling after a comma delimiter."
+                    },
+                    "javascript.format.insertSpaceAfterCommaDelimiter": {
+                      "type": "boolean",
+                      "default": true,
+                      "description": "Defines space handling after a comma delimiter.",
+                      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.format.insertSpaceAfterCommaDelimiter#` instead."
+                    },
+                    "typescript.format.insertSpaceAfterCommaDelimiter": {
+                      "type": "boolean",
+                      "default": true,
+                      "description": "Defines space handling after a comma delimiter.",
+                      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.format.insertSpaceAfterCommaDelimiter#` instead."
+                    },
+                    "js/ts.format.insertSpaceAfterConstructor": {
+                      "type": "boolean",
+                      "default": false,
+                      "description": "Defines space handling after the constructor keyword."
+                    },
+                    "javascript.format.insertSpaceAfterConstructor": {
+                      "type": "boolean",
+                      "default": false,
+                      "description": "Defines space handling after the constructor keyword.",
+                      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.format.insertSpaceAfterConstructor#` instead."
+                    },
+                    "typescript.format.insertSpaceAfterConstructor": {
+                      "type": "boolean",
+                      "default": false,
+                      "description": "Defines space handling after the constructor keyword.",
+                      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.format.insertSpaceAfterConstructor#` instead."
+                    },
+                    "js/ts.format.insertSpaceAfterSemicolonInForStatements": {
+                      "type": "boolean",
+                      "default": true,
+                      "description": "Defines space handling after a semicolon in a for statement."
+                    },
+                    "javascript.format.insertSpaceAfterSemicolonInForStatements": {
+                      "type": "boolean",
+                      "default": true,
+                      "description": "Defines space handling after a semicolon in a for statement.",
+                      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.format.insertSpaceAfterSemicolonInForStatements#` instead."
+                    },
+                    "typescript.format.insertSpaceAfterSemicolonInForStatements": {
+                      "type": "boolean",
+                      "default": true,
+                      "description": "Defines space handling after a semicolon in a for statement.",
+                      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.format.insertSpaceAfterSemicolonInForStatements#` instead."
+                    },
+                    "js/ts.format.insertSpaceBeforeAndAfterBinaryOperators": {
+                      "type": "boolean",
+                      "default": true,
+                      "description": "Defines space handling after a binary operator."
+                    },
+                    "javascript.format.insertSpaceBeforeAndAfterBinaryOperators": {
+                      "type": "boolean",
+                      "default": true,
+                      "description": "Defines space handling after a binary operator.",
+                      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.format.insertSpaceBeforeAndAfterBinaryOperators#` instead."
+                    },
+                    "typescript.format.insertSpaceBeforeAndAfterBinaryOperators": {
+                      "type": "boolean",
+                      "default": true,
+                      "description": "Defines space handling after a binary operator.",
+                      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.format.insertSpaceBeforeAndAfterBinaryOperators#` instead."
+                    },
+                    "js/ts.format.insertSpaceAfterKeywordsInControlFlowStatements": {
+                      "type": "boolean",
+                      "default": true,
+                      "description": "Defines space handling after keywords in a control flow statement."
+                    },
+                    "javascript.format.insertSpaceAfterKeywordsInControlFlowStatements": {
+                      "type": "boolean",
+                      "default": true,
+                      "description": "Defines space handling after keywords in a control flow statement.",
+                      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.format.insertSpaceAfterKeywordsInControlFlowStatements#` instead."
+                    },
+                    "typescript.format.insertSpaceAfterKeywordsInControlFlowStatements": {
+                      "type": "boolean",
+                      "default": true,
+                      "description": "Defines space handling after keywords in a control flow statement.",
+                      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.format.insertSpaceAfterKeywordsInControlFlowStatements#` instead."
+                    },
+                    "js/ts.format.insertSpaceAfterFunctionKeywordForAnonymousFunctions": {
+                      "type": "boolean",
+                      "default": true,
+                      "description": "Defines space handling after function keyword for anonymous functions."
+                    },
+                    "javascript.format.insertSpaceAfterFunctionKeywordForAnonymousFunctions": {
+                      "type": "boolean",
+                      "default": true,
+                      "description": "Defines space handling after function keyword for anonymous functions.",
+                      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.format.insertSpaceAfterFunctionKeywordForAnonymousFunctions#` instead."
+                    },
+                    "typescript.format.insertSpaceAfterFunctionKeywordForAnonymousFunctions": {
+                      "type": "boolean",
+                      "default": true,
+                      "description": "Defines space handling after function keyword for anonymous functions.",
+                      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.format.insertSpaceAfterFunctionKeywordForAnonymousFunctions#` instead."
+                    },
+                    "js/ts.format.insertSpaceBeforeFunctionParenthesis": {
+                      "type": "boolean",
+                      "default": false,
+                      "description": "Defines space handling before function argument parentheses."
+                    },
+                    "javascript.format.insertSpaceBeforeFunctionParenthesis": {
+                      "type": "boolean",
+                      "default": false,
+                      "description": "Defines space handling before function argument parentheses.",
+                      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.format.insertSpaceBeforeFunctionParenthesis#` instead."
+                    },
+                    "typescript.format.insertSpaceBeforeFunctionParenthesis": {
+                      "type": "boolean",
+                      "default": false,
+                      "description": "Defines space handling before function argument parentheses.",
+                      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.format.insertSpaceBeforeFunctionParenthesis#` instead."
+                    },
+                    "js/ts.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyParenthesis": {
+                      "type": "boolean",
+                      "default": false,
+                      "description": "Defines space handling after opening and before closing non-empty parenthesis."
+                    },
+                    "javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyParenthesis": {
+                      "type": "boolean",
+                      "default": false,
+                      "description": "Defines space handling after opening and before closing non-empty parenthesis.",
+                      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyParenthesis#` instead."
+                    },
+                    "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyParenthesis": {
+                      "type": "boolean",
+                      "default": false,
+                      "description": "Defines space handling after opening and before closing non-empty parenthesis.",
+                      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyParenthesis#` instead."
+                    },
+                    "js/ts.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBrackets": {
+                      "type": "boolean",
+                      "default": false,
+                      "description": "Defines space handling after opening and before closing non-empty brackets."
+                    },
+                    "javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBrackets": {
+                      "type": "boolean",
+                      "default": false,
+                      "description": "Defines space handling after opening and before closing non-empty brackets.",
+                      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBrackets#` instead."
+                    },
+                    "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBrackets": {
+                      "type": "boolean",
+                      "default": false,
+                      "description": "Defines space handling after opening and before closing non-empty brackets.",
+                      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBrackets#` instead."
+                    },
+                    "js/ts.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": {
+                      "type": "boolean",
+                      "default": true,
+                      "description": "Defines space handling after opening and before closing non-empty braces."
+                    },
+                    "javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": {
+                      "type": "boolean",
+                      "default": true,
+                      "description": "Defines space handling after opening and before closing non-empty braces.",
+                      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces#` instead."
+                    },
+                    "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": {
+                      "type": "boolean",
+                      "default": true,
+                      "description": "Defines space handling after opening and before closing non-empty braces.",
+                      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces#` instead."
+                    },
+                    "js/ts.format.insertSpaceAfterOpeningAndBeforeClosingEmptyBraces": {
+                      "type": "boolean",
+                      "default": true,
+                      "description": "Defines space handling after opening and before closing empty braces."
+                    },
+                    "javascript.format.insertSpaceAfterOpeningAndBeforeClosingEmptyBraces": {
+                      "type": "boolean",
+                      "default": true,
+                      "description": "Defines space handling after opening and before closing empty braces.",
+                      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.format.insertSpaceAfterOpeningAndBeforeClosingEmptyBraces#` instead."
+                    },
+                    "typescript.format.insertSpaceAfterOpeningAndBeforeClosingEmptyBraces": {
+                      "type": "boolean",
+                      "default": true,
+                      "description": "Defines space handling after opening and before closing empty braces.",
+                      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.format.insertSpaceAfterOpeningAndBeforeClosingEmptyBraces#` instead."
+                    },
+                    "js/ts.format.insertSpaceAfterOpeningAndBeforeClosingTemplateStringBraces": {
+                      "type": "boolean",
+                      "default": false,
+                      "description": "Defines space handling after opening and before closing template string braces."
+                    },
+                    "javascript.format.insertSpaceAfterOpeningAndBeforeClosingTemplateStringBraces": {
+                      "type": "boolean",
+                      "default": false,
+                      "description": "Defines space handling after opening and before closing template string braces.",
+                      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.format.insertSpaceAfterOpeningAndBeforeClosingTemplateStringBraces#` instead."
+                    },
+                    "typescript.format.insertSpaceAfterOpeningAndBeforeClosingTemplateStringBraces": {
+                      "type": "boolean",
+                      "default": false,
+                      "description": "Defines space handling after opening and before closing template string braces.",
+                      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.format.insertSpaceAfterOpeningAndBeforeClosingTemplateStringBraces#` instead."
+                    },
+                    "js/ts.format.insertSpaceAfterOpeningAndBeforeClosingJsxExpressionBraces": {
+                      "type": "boolean",
+                      "default": false,
+                      "description": "Defines space handling after opening and before closing JSX expression braces."
+                    },
+                    "javascript.format.insertSpaceAfterOpeningAndBeforeClosingJsxExpressionBraces": {
+                      "type": "boolean",
+                      "default": false,
+                      "description": "Defines space handling after opening and before closing JSX expression braces.",
+                      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.format.insertSpaceAfterOpeningAndBeforeClosingJsxExpressionBraces#` instead."
+                    },
+                    "typescript.format.insertSpaceAfterOpeningAndBeforeClosingJsxExpressionBraces": {
+                      "type": "boolean",
+                      "default": false,
+                      "description": "Defines space handling after opening and before closing JSX expression braces.",
+                      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.format.insertSpaceAfterOpeningAndBeforeClosingJsxExpressionBraces#` instead."
+                    },
+                    "js/ts.format.insertSpaceAfterTypeAssertion": {
+                      "type": "boolean",
+                      "default": false,
+                      "description": "Defines space handling after type assertions in TypeScript."
+                    },
+                    "typescript.format.insertSpaceAfterTypeAssertion": {
+                      "type": "boolean",
+                      "default": false,
+                      "description": "Defines space handling after type assertions in TypeScript.",
+                      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.format.insertSpaceAfterTypeAssertion#` instead."
+                    },
+                    "js/ts.format.placeOpenBraceOnNewLineForFunctions": {
+                      "type": "boolean",
+                      "default": false,
+                      "description": "Defines whether an open brace is put onto a new line for functions or not."
+                    },
+                    "javascript.format.placeOpenBraceOnNewLineForFunctions": {
+                      "type": "boolean",
+                      "default": false,
+                      "description": "Defines whether an open brace is put onto a new line for functions or not.",
+                      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.format.placeOpenBraceOnNewLineForFunctions#` instead."
+                    },
+                    "typescript.format.placeOpenBraceOnNewLineForFunctions": {
+                      "type": "boolean",
+                      "default": false,
+                      "description": "Defines whether an open brace is put onto a new line for functions or not.",
+                      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.format.placeOpenBraceOnNewLineForFunctions#` instead."
+                    },
+                    "js/ts.format.placeOpenBraceOnNewLineForControlBlocks": {
+                      "type": "boolean",
+                      "default": false,
+                      "description": "Defines whether an open brace is put onto a new line for control blocks or not."
+                    },
+                    "javascript.format.placeOpenBraceOnNewLineForControlBlocks": {
+                      "type": "boolean",
+                      "default": false,
+                      "description": "Defines whether an open brace is put onto a new line for control blocks or not.",
+                      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.format.placeOpenBraceOnNewLineForControlBlocks#` instead."
+                    },
+                    "typescript.format.placeOpenBraceOnNewLineForControlBlocks": {
+                      "type": "boolean",
+                      "default": false,
+                      "description": "Defines whether an open brace is put onto a new line for control blocks or not.",
+                      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.format.placeOpenBraceOnNewLineForControlBlocks#` instead."
+                    },
+                    "js/ts.format.semicolons": {
+                      "type": "string",
+                      "default": "ignore",
+                      "description": "Defines handling of optional semicolons.",
+                      "enum": [
+                        "ignore",
+                        "insert",
+                        "remove"
+                      ],
+                      "enumDescriptions": [
+                        "Don't insert or remove any semicolons.",
+                        "Insert semicolons at statement ends.",
+                        "Remove unnecessary semicolons."
+                      ]
+                    },
+                    "javascript.format.semicolons": {
+                      "type": "string",
+                      "default": "ignore",
+                      "description": "Defines handling of optional semicolons.",
+                      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.format.semicolons#` instead.",
+                      "enum": [
+                        "ignore",
+                        "insert",
+                        "remove"
+                      ],
+                      "enumDescriptions": [
+                        "Don't insert or remove any semicolons.",
+                        "Insert semicolons at statement ends.",
+                        "Remove unnecessary semicolons."
+                      ]
+                    },
+                    "typescript.format.semicolons": {
+                      "type": "string",
+                      "default": "ignore",
+                      "description": "Defines handling of optional semicolons.",
+                      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.format.semicolons#` instead.",
+                      "enum": [
+                        "ignore",
+                        "insert",
+                        "remove"
+                      ],
+                      "enumDescriptions": [
+                        "Don't insert or remove any semicolons.",
+                        "Insert semicolons at statement ends.",
+                        "Remove unnecessary semicolons."
+                      ]
+                    },
+                    "js/ts.format.indentSwitchCase": {
+                      "type": "boolean",
+                      "default": true,
+                      "description": "Indent case clauses in switch statements. Requires using TypeScript 5.1+ in the workspace."
+                    },
+                    "javascript.format.indentSwitchCase": {
+                      "type": "boolean",
+                      "default": true,
+                      "description": "Indent case clauses in switch statements. Requires using TypeScript 5.1+ in the workspace.",
+                      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.format.indentSwitchCase#` instead."
+                    },
+                    "typescript.format.indentSwitchCase": {
+                      "type": "boolean",
+                      "default": true,
+                      "description": "Indent case clauses in switch statements. Requires using TypeScript 5.1+ in the workspace.",
+                      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.format.indentSwitchCase#` instead."
+                    },
+                    "js/ts.validate.enabled": {
+                      "type": "boolean",
+                      "default": true,
+                      "description": "Enable/disable JavaScript and TypeScript validation."
+                    },
+                    "typescript.validate.enable": {
+                      "type": "boolean",
+                      "default": true,
+                      "description": "Enable/disable TypeScript validation.",
+                      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.validate.enabled#` instead."
+                    },
+                    "javascript.validate.enable": {
+                      "type": "boolean",
+                      "default": true,
+                      "description": "Enable/disable JavaScript validation.",
+                      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.validate.enabled#` instead."
+                    },
+                    "js/ts.reportStyleChecksAsWarnings": {
+                      "type": "boolean",
+                      "default": true,
+                      "description": "Report style checks as warnings."
+                    },
+                    "typescript.reportStyleChecksAsWarnings": {
+                      "type": "boolean",
+                      "default": true,
+                      "description": "Report style checks as warnings.",
+                      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.reportStyleChecksAsWarnings#` instead."
+                    },
+                    "js/ts.implicitProjectConfig.module": {
+                      "type": "string",
+                      "markdownDescription": "Sets the module system for the program. See more: https://www.typescriptlang.org/tsconfig#module.",
+                      "default": "ESNext",
+                      "enum": [
+                        "CommonJS",
+                        "AMD",
+                        "System",
+                        "UMD",
+                        "ES6",
+                        "ES2015",
+                        "ES2020",
+                        "ESNext",
+                        "None",
+                        "ES2022",
+                        "Node12",
+                        "NodeNext"
+                      ]
+                    },
+                    "js/ts.implicitProjectConfig.target": {
+                      "type": "string",
+                      "default": "ES2024",
+                      "markdownDescription": "Set target JavaScript language version for emitted JavaScript and include library declarations. See more: https://www.typescriptlang.org/tsconfig#target.",
+                      "enum": [
+                        "ES3",
+                        "ES5",
+                        "ES6",
+                        "ES2015",
+                        "ES2016",
+                        "ES2017",
+                        "ES2018",
+                        "ES2019",
+                        "ES2020",
+                        "ES2021",
+                        "ES2022",
+                        "ES2023",
+                        "ES2024",
+                        "ESNext"
+                      ]
+                    },
+                    "js/ts.implicitProjectConfig.checkJs": {
+                      "type": "boolean",
+                      "default": false,
+                      "markdownDescription": "Enable/disable semantic checking of JavaScript files. Existing `jsconfig.json` or `tsconfig.json` files override this setting."
+                    },
+                    "js/ts.implicitProjectConfig.experimentalDecorators": {
+                      "type": "boolean",
+                      "default": false,
+                      "markdownDescription": "Enable/disable `experimentalDecorators` in JavaScript files that are not part of a project. Existing `jsconfig.json` or `tsconfig.json` files override this setting."
+                    },
+                    "js/ts.implicitProjectConfig.strictNullChecks": {
+                      "type": "boolean",
+                      "default": true,
+                      "markdownDescription": "Enable/disable [strict null checks](https://www.typescriptlang.org/tsconfig#strictNullChecks) in JavaScript and TypeScript files that are not part of a project. Existing `jsconfig.json` or `tsconfig.json` files override this setting."
+                    },
+                    "js/ts.implicitProjectConfig.strictFunctionTypes": {
+                      "type": "boolean",
+                      "default": true,
+                      "markdownDescription": "Enable/disable [strict function types](https://www.typescriptlang.org/tsconfig#strictFunctionTypes) in JavaScript and TypeScript files that are not part of a project. Existing `jsconfig.json` or `tsconfig.json` files override this setting."
+                    },
+                    "js/ts.implicitProjectConfig.strict": {
+                      "type": "boolean",
+                      "default": true,
+                      "markdownDescription": "Enable/disable [strict mode](https://www.typescriptlang.org/tsconfig#strict) in JavaScript and TypeScript files that are not part of a project. Existing `jsconfig.json` or `tsconfig.json` files override this setting."
+                    },
+                    "js/ts.updateImportsOnFileMove.enabled": {
+                      "type": "string",
+                      "enum": [
+                        "prompt",
+                        "always",
+                        "never"
+                      ],
+                      "markdownEnumDescriptions": [
+                        "Prompt on each rename.",
+                        "Always update paths automatically.",
+                        "Never rename paths and don't prompt."
+                      ],
+                      "default": "prompt",
+                      "description": "Enable/disable automatic updating of import paths when you rename or move a file in VS Code."
+                    },
+                    "typescript.updateImportsOnFileMove.enabled": {
+                      "type": "string",
+                      "enum": [
+                        "prompt",
+                        "always",
+                        "never"
+                      ],
+                      "markdownEnumDescriptions": [
+                        "Prompt on each rename.",
+                        "Always update paths automatically.",
+                        "Never rename paths and don't prompt."
+                      ],
+                      "default": "prompt",
+                      "description": "Enable/disable automatic updating of import paths when you rename or move a file in VS Code.",
+                      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.updateImportsOnFileMove.enabled#` instead."
+                    },
+                    "javascript.updateImportsOnFileMove.enabled": {
+                      "type": "string",
+                      "enum": [
+                        "prompt",
+                        "always",
+                        "never"
+                      ],
+                      "markdownEnumDescriptions": [
+                        "Prompt on each rename.",
+                        "Always update paths automatically.",
+                        "Never rename paths and don't prompt."
+                      ],
+                      "default": "prompt",
+                      "description": "Enable/disable automatic updating of import paths when you rename or move a file in VS Code.",
+                      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.updateImportsOnFileMove.enabled#` instead."
+                    },
+                    "js/ts.autoClosingTags.enabled": {
+                      "type": "boolean",
+                      "default": true,
+                      "description": "Enable/disable automatic closing of JSX tags."
+                    },
+                    "typescript.autoClosingTags": {
+                      "type": "boolean",
+                      "default": true,
+                      "description": "Enable/disable automatic closing of JSX tags.",
+                      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.autoClosingTags.enabled#` instead."
+                    },
+                    "javascript.autoClosingTags": {
+                      "type": "boolean",
+                      "default": true,
+                      "description": "Enable/disable automatic closing of JSX tags.",
+                      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.autoClosingTags.enabled#` instead."
+                    },
+                    "js/ts.workspaceSymbols.scope": {
+                      "type": "string",
+                      "enum": [
+                        "allOpenProjects",
+                        "currentProject"
+                      ],
+                      "enumDescriptions": [
+                        "Search all open JavaScript or TypeScript projects for symbols.",
+                        "Only search for symbols in the current JavaScript or TypeScript project."
+                      ],
+                      "default": "allOpenProjects",
+                      "markdownDescription": "Controls which files are searched by [Go to Symbol in Workspace](https://code.visualstudio.com/docs/editor/editingevolved#_open-symbol-by-name)."
+                    },
+                    "typescript.workspaceSymbols.scope": {
+                      "type": "string",
+                      "enum": [
+                        "allOpenProjects",
+                        "currentProject"
+                      ],
+                      "enumDescriptions": [
+                        "Search all open JavaScript or TypeScript projects for symbols.",
+                        "Only search for symbols in the current JavaScript or TypeScript project."
+                      ],
+                      "default": "allOpenProjects",
+                      "markdownDescription": "Controls which files are searched by [Go to Symbol in Workspace](https://code.visualstudio.com/docs/editor/editingevolved#_open-symbol-by-name).",
+                      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.workspaceSymbols.scope#` instead."
+                    },
+                    "js/ts.preferGoToSourceDefinition": {
+                      "type": "boolean",
+                      "default": false,
+                      "description": "Makes `Go to Definition` avoid type declaration files when possible by triggering `Go to Source Definition` instead. This allows `Go to Source Definition` to be triggered with the mouse gesture."
+                    },
+                    "typescript.preferGoToSourceDefinition": {
+                      "type": "boolean",
+                      "default": false,
+                      "description": "Makes `Go to Definition` avoid type declaration files when possible by triggering `Go to Source Definition` instead. This allows `Go to Source Definition` to be triggered with the mouse gesture.",
+                      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.preferGoToSourceDefinition#` instead."
+                    },
+                    "javascript.preferGoToSourceDefinition": {
+                      "type": "boolean",
+                      "default": false,
+                      "description": "Makes `Go to Definition` avoid type declaration files when possible by triggering `Go to Source Definition` instead. This allows `Go to Source Definition` to be triggered with the mouse gesture.",
+                      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.preferGoToSourceDefinition#` instead."
+                    },
+                    "js/ts.workspaceSymbols.excludeLibrarySymbols": {
+                      "type": "boolean",
+                      "default": true,
+                      "markdownDescription": "Exclude symbols that come from library files in `Go to Symbol in Workspace` results. Requires using TypeScript 5.3+ in the workspace."
+                    },
+                    "typescript.workspaceSymbols.excludeLibrarySymbols": {
+                      "type": "boolean",
+                      "default": true,
+                      "markdownDescription": "Exclude symbols that come from library files in `Go to Symbol in Workspace` results. Requires using TypeScript 5.3+ in the workspace.",
+                      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.workspaceSymbols.excludeLibrarySymbols#` instead."
+                    },
+                    "js/ts.updateImportsOnPaste.enabled": {
+                      "type": "boolean",
+                      "default": true,
+                      "markdownDescription": "Automatically update imports when pasting code. Requires TypeScript 5.6+."
+                    },
+                    "javascript.updateImportsOnPaste.enabled": {
+                      "type": "boolean",
+                      "default": true,
+                      "markdownDescription": "Automatically update imports when pasting code. Requires TypeScript 5.6+.",
+                      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.updateImportsOnPaste.enabled#` instead."
+                    },
+                    "typescript.updateImportsOnPaste.enabled": {
+                      "type": "boolean",
+                      "default": true,
+                      "markdownDescription": "Automatically update imports when pasting code. Requires TypeScript 5.6+.",
+                      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.updateImportsOnPaste.enabled#` instead."
+                    },
+                    "js/ts.hover.maximumLength": {
+                      "type": "number",
+                      "default": 500,
+                      "description": "The maximum number of characters in a hover. If the hover is longer than this, it will be truncated. Requires TypeScript 5.9+."
+                    },
+                    "js/ts.suggest.enabled": {
+                      "type": "boolean",
+                      "default": true,
+                      "description": "Enable/disable autocomplete suggestions."
+                    },
+                    "javascript.suggest.enabled": {
+                      "type": "boolean",
+                      "default": true,
+                      "description": "Enable/disable autocomplete suggestions.",
+                      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.suggest.enabled#` instead."
+                    },
+                    "typescript.suggest.enabled": {
+                      "type": "boolean",
+                      "default": true,
+                      "description": "Enable/disable autocomplete suggestions.",
+                      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.suggest.enabled#` instead."
+                    },
+                    "js/ts.suggest.autoImports": {
+                      "type": "boolean",
+                      "default": true,
+                      "description": "Enable/disable auto import suggestions."
+                    },
+                    "javascript.suggest.autoImports": {
+                      "type": "boolean",
+                      "default": true,
+                      "description": "Enable/disable auto import suggestions.",
+                      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.suggest.autoImports#` instead."
+                    },
+                    "typescript.suggest.autoImports": {
+                      "type": "boolean",
+                      "default": true,
+                      "description": "Enable/disable auto import suggestions.",
+                      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.suggest.autoImports#` instead."
+                    },
+                    "js/ts.suggest.names": {
+                      "type": "boolean",
+                      "default": true,
+                      "markdownDescription": "Enable/disable including unique names from the file in JavaScript suggestions. Note that name suggestions are always disabled in JavaScript code that is semantically checked using `@ts-check` or `checkJs`."
+                    },
+                    "javascript.suggest.names": {
+                      "type": "boolean",
+                      "default": true,
+                      "markdownDescription": "Enable/disable including unique names from the file in JavaScript suggestions. Note that name suggestions are always disabled in JavaScript code that is semantically checked using `@ts-check` or `checkJs`.",
+                      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.suggest.names#` instead."
+                    },
+                    "js/ts.suggest.completeFunctionCalls": {
+                      "type": "boolean",
+                      "default": false,
+                      "description": "Complete functions with their parameter signature."
+                    },
+                    "javascript.suggest.completeFunctionCalls": {
+                      "type": "boolean",
+                      "default": false,
+                      "description": "Complete functions with their parameter signature.",
+                      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.suggest.completeFunctionCalls#` instead."
+                    },
+                    "typescript.suggest.completeFunctionCalls": {
+                      "type": "boolean",
+                      "default": false,
+                      "description": "Complete functions with their parameter signature.",
+                      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.suggest.completeFunctionCalls#` instead."
+                    },
+                    "js/ts.suggest.paths": {
+                      "type": "boolean",
+                      "default": true,
+                      "description": "Enable/disable suggestions for paths in import statements and require calls."
+                    },
+                    "javascript.suggest.paths": {
+                      "type": "boolean",
+                      "default": true,
+                      "description": "Enable/disable suggestions for paths in import statements and require calls.",
+                      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.suggest.paths#` instead."
+                    },
+                    "typescript.suggest.paths": {
+                      "type": "boolean",
+                      "default": true,
+                      "description": "Enable/disable suggestions for paths in import statements and require calls.",
+                      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.suggest.paths#` instead."
+                    },
+                    "js/ts.suggest.jsdoc.enabled": {
+                      "type": "boolean",
+                      "default": true,
+                      "description": "Enable/disable suggestion to complete JSDoc comments."
+                    },
+                    "javascript.suggest.completeJSDocs": {
+                      "type": "boolean",
+                      "default": true,
+                      "description": "Enable/disable suggestion to complete JSDoc comments.",
+                      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.suggest.jsdoc.enabled#` instead."
+                    },
+                    "typescript.suggest.completeJSDocs": {
+                      "type": "boolean",
+                      "default": true,
+                      "description": "Enable/disable suggestion to complete JSDoc comments.",
+                      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.suggest.jsdoc.enabled#` instead."
+                    },
+                    "js/ts.suggest.jsdoc.generateReturns": {
+                      "type": "boolean",
+                      "default": true,
+                      "markdownDescription": "Enable/disable generating `@returns` annotations for JSDoc templates."
+                    },
+                    "javascript.suggest.jsdoc.generateReturns": {
+                      "type": "boolean",
+                      "default": true,
+                      "markdownDescription": "Enable/disable generating `@returns` annotations for JSDoc templates.",
+                      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.suggest.jsdoc.generateReturns#` instead."
+                    },
+                    "typescript.suggest.jsdoc.generateReturns": {
+                      "type": "boolean",
+                      "default": true,
+                      "markdownDescription": "Enable/disable generating `@returns` annotations for JSDoc templates.",
+                      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.suggest.jsdoc.generateReturns#` instead."
+                    },
+                    "js/ts.suggest.includeAutomaticOptionalChainCompletions": {
+                      "type": "boolean",
+                      "default": true,
+                      "description": "Enable/disable showing completions on potentially undefined values that insert an optional chain call. Requires strict null checks to be enabled."
+                    },
+                    "javascript.suggest.includeAutomaticOptionalChainCompletions": {
+                      "type": "boolean",
+                      "default": true,
+                      "description": "Enable/disable showing completions on potentially undefined values that insert an optional chain call. Requires strict null checks to be enabled.",
+                      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.suggest.includeAutomaticOptionalChainCompletions#` instead."
+                    },
+                    "typescript.suggest.includeAutomaticOptionalChainCompletions": {
+                      "type": "boolean",
+                      "default": true,
+                      "description": "Enable/disable showing completions on potentially undefined values that insert an optional chain call. Requires strict null checks to be enabled.",
+                      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.suggest.includeAutomaticOptionalChainCompletions#` instead."
+                    },
+                    "js/ts.suggest.includeCompletionsForImportStatements": {
+                      "type": "boolean",
+                      "default": true,
+                      "description": "Enable/disable auto-import-style completions on partially-typed import statements."
+                    },
+                    "javascript.suggest.includeCompletionsForImportStatements": {
+                      "type": "boolean",
+                      "default": true,
+                      "description": "Enable/disable auto-import-style completions on partially-typed import statements.",
+                      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.suggest.includeCompletionsForImportStatements#` instead."
+                    },
+                    "typescript.suggest.includeCompletionsForImportStatements": {
+                      "type": "boolean",
+                      "default": true,
+                      "description": "Enable/disable auto-import-style completions on partially-typed import statements.",
+                      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.suggest.includeCompletionsForImportStatements#` instead."
+                    },
+                    "js/ts.suggest.classMemberSnippets.enabled": {
+                      "type": "boolean",
+                      "default": true,
+                      "description": "Enable/disable snippet completions for class members."
+                    },
+                    "javascript.suggest.classMemberSnippets.enabled": {
+                      "type": "boolean",
+                      "default": true,
+                      "description": "Enable/disable snippet completions for class members.",
+                      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.suggest.classMemberSnippets.enabled#` instead."
+                    },
+                    "typescript.suggest.classMemberSnippets.enabled": {
+                      "type": "boolean",
+                      "default": true,
+                      "description": "Enable/disable snippet completions for class members.",
+                      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.suggest.classMemberSnippets.enabled#` instead."
+                    },
+                    "js/ts.suggest.objectLiteralMethodSnippets.enabled": {
+                      "type": "boolean",
+                      "default": true,
+                      "description": "Enable/disable snippet completions for methods in object literals."
+                    },
+                    "typescript.suggest.objectLiteralMethodSnippets.enabled": {
+                      "type": "boolean",
+                      "default": true,
+                      "description": "Enable/disable snippet completions for methods in object literals.",
+                      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.suggest.objectLiteralMethodSnippets.enabled#` instead."
+                    },
+                    "js/ts.referencesCodeLens.enabled": {
+                      "type": "boolean",
+                      "default": false,
+                      "description": "Enable/disable references CodeLens in JavaScript and TypeScript files. This CodeLens shows the number of references for classes and exported functions and allows you to peek or navigate to them."
+                    },
+                    "javascript.referencesCodeLens.enabled": {
+                      "type": "boolean",
+                      "default": false,
+                      "description": "Enable/disable references CodeLens in JavaScript and TypeScript files. This CodeLens shows the number of references for classes and exported functions and allows you to peek or navigate to them.",
+                      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.referencesCodeLens.enabled#` instead."
+                    },
+                    "typescript.referencesCodeLens.enabled": {
+                      "type": "boolean",
+                      "default": false,
+                      "description": "Enable/disable references CodeLens in JavaScript and TypeScript files. This CodeLens shows the number of references for classes and exported functions and allows you to peek or navigate to them.",
+                      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.referencesCodeLens.enabled#` instead."
+                    },
+                    "js/ts.referencesCodeLens.showOnAllFunctions": {
+                      "type": "boolean",
+                      "default": false,
+                      "markdownDescription": "Enable/disable the [references CodeLens](#js/ts.referencesCodeLens.enabled) on all functions in JavaScript and TypeScript files."
+                    },
+                    "javascript.referencesCodeLens.showOnAllFunctions": {
+                      "type": "boolean",
+                      "default": false,
+                      "markdownDescription": "Enable/disable the [references CodeLens](#js/ts.referencesCodeLens.enabled) on all functions in JavaScript and TypeScript files.",
+                      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.referencesCodeLens.showOnAllFunctions#` instead."
+                    },
+                    "typescript.referencesCodeLens.showOnAllFunctions": {
+                      "type": "boolean",
+                      "default": false,
+                      "markdownDescription": "Enable/disable the [references CodeLens](#js/ts.referencesCodeLens.enabled) on all functions in JavaScript and TypeScript files.",
+                      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.referencesCodeLens.showOnAllFunctions#` instead."
+                    },
+                    "js/ts.implementationsCodeLens.enabled": {
+                      "type": "boolean",
+                      "default": false,
+                      "description": "Enable/disable implementations CodeLens in TypeScript files. This CodeLens shows the implementers of TypeScript interfaces."
+                    },
+                    "typescript.implementationsCodeLens.enabled": {
+                      "type": "boolean",
+                      "default": false,
+                      "description": "Enable/disable implementations CodeLens in TypeScript files. This CodeLens shows the implementers of TypeScript interfaces.",
+                      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.implementationsCodeLens.enabled#` instead."
+                    },
+                    "js/ts.implementationsCodeLens.showOnInterfaceMethods": {
+                      "type": "boolean",
+                      "default": false,
+                      "markdownDescription": "Enable/disable [implementations CodeLens](#js/ts.implementationsCodeLens.enabled) on TypeScript interface methods."
+                    },
+                    "typescript.implementationsCodeLens.showOnInterfaceMethods": {
+                      "type": "boolean",
+                      "default": false,
+                      "markdownDescription": "Enable/disable [implementations CodeLens](#js/ts.implementationsCodeLens.enabled) on TypeScript interface methods.",
+                      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.implementationsCodeLens.showOnInterfaceMethods#` instead."
+                    },
+                    "js/ts.implementationsCodeLens.showOnAllClassMethods": {
+                      "type": "boolean",
+                      "default": false,
+                      "markdownDescription": "Enable/disable showing [implementations CodeLens](#js/ts.implementationsCodeLens.enabled) above all TypeScript class methods instead of only on abstract methods."
+                    },
+                    "typescript.implementationsCodeLens.showOnAllClassMethods": {
+                      "type": "boolean",
+                      "default": false,
+                      "markdownDescription": "Enable/disable showing [implementations CodeLens](#js/ts.implementationsCodeLens.enabled) above all TypeScript class methods instead of only on abstract methods.",
+                      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.implementationsCodeLens.showOnAllClassMethods#` instead."
+                    },
+                    "js/ts.inlayHints.parameterNames.enabled": {
+                      "type": "string",
+                      "enum": [
+                        "none",
+                        "literals",
+                        "all"
+                      ],
+                      "enumDescriptions": [
+                        "Disable parameter name hints.",
+                        "Enable parameter name hints only for literal arguments.",
+                        "Enable parameter name hints for literal and non-literal arguments."
+                      ],
+                      "default": "none",
+                      "markdownDescription": "Enable/disable inlay hints for parameter names:\n```typescript\n\nparseInt(/* str: */ '123', /* radix: */ 8)\n \n```"
+                    },
+                    "javascript.inlayHints.parameterNames.enabled": {
+                      "type": "string",
+                      "enum": [
+                        "none",
+                        "literals",
+                        "all"
+                      ],
+                      "enumDescriptions": [
+                        "Disable parameter name hints.",
+                        "Enable parameter name hints only for literal arguments.",
+                        "Enable parameter name hints for literal and non-literal arguments."
+                      ],
+                      "default": "none",
+                      "markdownDescription": "Enable/disable inlay hints for parameter names:\n```typescript\n\nparseInt(/* str: */ '123', /* radix: */ 8)\n \n```",
+                      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.inlayHints.parameterNames.enabled#` instead."
+                    },
+                    "typescript.inlayHints.parameterNames.enabled": {
+                      "type": "string",
+                      "enum": [
+                        "none",
+                        "literals",
+                        "all"
+                      ],
+                      "enumDescriptions": [
+                        "Disable parameter name hints.",
+                        "Enable parameter name hints only for literal arguments.",
+                        "Enable parameter name hints for literal and non-literal arguments."
+                      ],
+                      "default": "none",
+                      "markdownDescription": "Enable/disable inlay hints for parameter names:\n```typescript\n\nparseInt(/* str: */ '123', /* radix: */ 8)\n \n```",
+                      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.inlayHints.parameterNames.enabled#` instead."
+                    },
+                    "js/ts.inlayHints.parameterNames.suppressWhenArgumentMatchesName": {
+                      "type": "boolean",
+                      "default": true,
+                      "markdownDescription": "Suppress parameter name hints on arguments whose text is identical to the parameter name."
+                    },
+                    "javascript.inlayHints.parameterNames.suppressWhenArgumentMatchesName": {
+                      "type": "boolean",
+                      "default": true,
+                      "markdownDescription": "Suppress parameter name hints on arguments whose text is identical to the parameter name.",
+                      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.inlayHints.parameterNames.suppressWhenArgumentMatchesName#` instead."
+                    },
+                    "typescript.inlayHints.parameterNames.suppressWhenArgumentMatchesName": {
+                      "type": "boolean",
+                      "default": true,
+                      "markdownDescription": "Suppress parameter name hints on arguments whose text is identical to the parameter name.",
+                      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.inlayHints.parameterNames.suppressWhenArgumentMatchesName#` instead."
+                    },
+                    "js/ts.inlayHints.parameterTypes.enabled": {
+                      "type": "boolean",
+                      "default": false,
+                      "markdownDescription": "Enable/disable inlay hints for implicit parameter types:\n```typescript\n\nel.addEventListener('click', e /* :MouseEvent */ => ...)\n \n```"
+                    },
+                    "javascript.inlayHints.parameterTypes.enabled": {
+                      "type": "boolean",
+                      "default": false,
+                      "markdownDescription": "Enable/disable inlay hints for implicit parameter types:\n```typescript\n\nel.addEventListener('click', e /* :MouseEvent */ => ...)\n \n```",
+                      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.inlayHints.parameterTypes.enabled#` instead."
+                    },
+                    "typescript.inlayHints.parameterTypes.enabled": {
+                      "type": "boolean",
+                      "default": false,
+                      "markdownDescription": "Enable/disable inlay hints for implicit parameter types:\n```typescript\n\nel.addEventListener('click', e /* :MouseEvent */ => ...)\n \n```",
+                      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.inlayHints.parameterTypes.enabled#` instead."
+                    },
+                    "js/ts.inlayHints.variableTypes.enabled": {
+                      "type": "boolean",
+                      "default": false,
+                      "markdownDescription": "Enable/disable inlay hints for implicit variable types:\n```typescript\n\nconst foo /* :number */ = Date.now();\n \n```"
+                    },
+                    "javascript.inlayHints.variableTypes.enabled": {
+                      "type": "boolean",
+                      "default": false,
+                      "markdownDescription": "Enable/disable inlay hints for implicit variable types:\n```typescript\n\nconst foo /* :number */ = Date.now();\n \n```",
+                      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.inlayHints.variableTypes.enabled#` instead."
+                    },
+                    "typescript.inlayHints.variableTypes.enabled": {
+                      "type": "boolean",
+                      "default": false,
+                      "markdownDescription": "Enable/disable inlay hints for implicit variable types:\n```typescript\n\nconst foo /* :number */ = Date.now();\n \n```",
+                      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.inlayHints.variableTypes.enabled#` instead."
+                    },
+                    "js/ts.inlayHints.variableTypes.suppressWhenTypeMatchesName": {
+                      "type": "boolean",
+                      "default": true,
+                      "markdownDescription": "Suppress type hints on variables whose name is identical to the type name."
+                    },
+                    "javascript.inlayHints.variableTypes.suppressWhenTypeMatchesName": {
+                      "type": "boolean",
+                      "default": true,
+                      "markdownDescription": "Suppress type hints on variables whose name is identical to the type name.",
+                      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.inlayHints.variableTypes.suppressWhenTypeMatchesName#` instead."
+                    },
+                    "typescript.inlayHints.variableTypes.suppressWhenTypeMatchesName": {
+                      "type": "boolean",
+                      "default": true,
+                      "markdownDescription": "Suppress type hints on variables whose name is identical to the type name.",
+                      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.inlayHints.variableTypes.suppressWhenTypeMatchesName#` instead."
+                    },
+                    "js/ts.inlayHints.propertyDeclarationTypes.enabled": {
+                      "type": "boolean",
+                      "default": false,
+                      "markdownDescription": "Enable/disable inlay hints for implicit types on property declarations:\n```typescript\n\nclass Foo {\n\tprop /* :number */ = Date.now();\n}\n \n```"
+                    },
+                    "javascript.inlayHints.propertyDeclarationTypes.enabled": {
+                      "type": "boolean",
+                      "default": false,
+                      "markdownDescription": "Enable/disable inlay hints for implicit types on property declarations:\n```typescript\n\nclass Foo {\n\tprop /* :number */ = Date.now();\n}\n \n```",
+                      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.inlayHints.propertyDeclarationTypes.enabled#` instead."
+                    },
+                    "typescript.inlayHints.propertyDeclarationTypes.enabled": {
+                      "type": "boolean",
+                      "default": false,
+                      "markdownDescription": "Enable/disable inlay hints for implicit types on property declarations:\n```typescript\n\nclass Foo {\n\tprop /* :number */ = Date.now();\n}\n \n```",
+                      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.inlayHints.propertyDeclarationTypes.enabled#` instead."
+                    },
+                    "js/ts.inlayHints.functionLikeReturnTypes.enabled": {
+                      "type": "boolean",
+                      "default": false,
+                      "markdownDescription": "Enable/disable inlay hints for implicit return types on function signatures:\n```typescript\n\nfunction foo() /* :number */ {\n\treturn Date.now();\n} \n \n```"
+                    },
+                    "javascript.inlayHints.functionLikeReturnTypes.enabled": {
+                      "type": "boolean",
+                      "default": false,
+                      "markdownDescription": "Enable/disable inlay hints for implicit return types on function signatures:\n```typescript\n\nfunction foo() /* :number */ {\n\treturn Date.now();\n} \n \n```",
+                      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.inlayHints.functionLikeReturnTypes.enabled#` instead."
+                    },
+                    "typescript.inlayHints.functionLikeReturnTypes.enabled": {
+                      "type": "boolean",
+                      "default": false,
+                      "markdownDescription": "Enable/disable inlay hints for implicit return types on function signatures:\n```typescript\n\nfunction foo() /* :number */ {\n\treturn Date.now();\n} \n \n```",
+                      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.inlayHints.functionLikeReturnTypes.enabled#` instead."
+                    },
+                    "js/ts.inlayHints.enumMemberValues.enabled": {
+                      "type": "boolean",
+                      "default": false,
+                      "markdownDescription": "Enable/disable inlay hints for member values in enum declarations:\n```typescript\n\nenum MyValue {\n\tA /* = 0 */;\n\tB /* = 1 */;\n}\n \n```"
+                    },
+                    "typescript.inlayHints.enumMemberValues.enabled": {
+                      "type": "boolean",
+                      "default": false,
+                      "markdownDescription": "Enable/disable inlay hints for member values in enum declarations:\n```typescript\n\nenum MyValue {\n\tA /* = 0 */;\n\tB /* = 1 */;\n}\n \n```",
+                      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.inlayHints.enumMemberValues.enabled#` instead."
+                    },
+                    "js/ts.tsserver.automaticTypeAcquisition.enabled": {
+                      "type": "boolean",
+                      "default": true,
+                      "markdownDescription": "Enable [automatic type acquisition](https://code.visualstudio.com/docs/nodejs/working-with-javascript#_typings-and-automatic-type-acquisition). Automatic type acquisition fetches `@types` packages from npm to improve IntelliSense for external libraries."
+                    },
+                    "typescript.disableAutomaticTypeAcquisition": {
+                      "type": "boolean",
+                      "default": false,
+                      "markdownDescription": "Disables [automatic type acquisition](https://code.visualstudio.com/docs/nodejs/working-with-javascript#_typings-and-automatic-type-acquisition). Automatic type acquisition fetches `@types` packages from npm to improve IntelliSense for external libraries.",
+                      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.tsserver.automaticTypeAcquisition.enabled#` instead."
+                    },
+                    "typescript.tsserver.web.typeAcquisition.enabled": {
+                      "type": "boolean",
+                      "default": true,
+                      "description": "Enable/disable package acquisition on the web. This enables IntelliSense for imported packages. Requires `#js/ts.tsserver.web.projectWideIntellisense.enabled#`. Currently not supported for Safari.",
+                      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.tsserver.web.typeAcquisition.enabled#` instead."
+                    },
+                    "js/ts.tsserver.watchOptions": {
+                      "description": "Configure which watching strategies should be used to keep track of files and directories.",
+                      "default": "vscode",
+                      "oneOf": [
+                        {
+                          "type": "string",
+                          "const": "vscode",
+                          "description": "Use VS Code's file watchers instead of TypeScript's. Requires using TypeScript 5.4+ in the workspace."
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "watchFile": {
+                              "type": "string",
+                              "description": "Strategy for how individual files are watched.",
+                              "enum": [
+                                "fixedChunkSizePolling",
+                                "fixedPollingInterval",
+                                "priorityPollingInterval",
+                                "dynamicPriorityPolling",
+                                "useFsEvents",
+                                "useFsEventsOnParentDirectory"
+                              ],
+                              "enumDescriptions": [
+                                "Polls files in chunks at regular interval.",
+                                "Check every file for changes several times a second at a fixed interval.",
+                                "Check every file for changes several times a second, but use heuristics to check certain types of files less frequently than others.",
+                                "Use a dynamic queue where less-frequently modified files will be checked less often.",
+                                "Attempt to use the operating system/file system's native events for file changes.",
+                                "Attempt to use the operating system/file system's native events to listen for changes on a file's containing directories. This can use fewer file watchers, but might be less accurate."
+                              ],
+                              "default": "useFsEvents"
+                            },
+                            "watchDirectory": {
+                              "type": "string",
+                              "description": "Strategy for how entire directory trees are watched under systems that lack recursive file-watching functionality.",
+                              "enum": [
+                                "fixedChunkSizePolling",
+                                "fixedPollingInterval",
+                                "dynamicPriorityPolling",
+                                "useFsEvents"
+                              ],
+                              "enumDescriptions": [
+                                "Polls directories in chunks at regular interval.",
+                                "Check every directory for changes several times a second at a fixed interval.",
+                                "Use a dynamic queue where less-frequently modified directories will be checked less often.",
+                                "Attempt to use the operating system/file system's native events for directory changes."
+                              ],
+                              "default": "useFsEvents"
+                            },
+                            "fallbackPolling": {
+                              "type": "string",
+                              "description": "When using file system events, this option specifies the polling strategy that gets used when the system runs out of native file watchers and/or doesn't support native file watchers.",
+                              "enum": [
+                                "fixedPollingInterval",
+                                "priorityPollingInterval",
+                                "dynamicPriorityPolling"
+                              ],
+                              "enumDescriptions": [
+                                "configuration.tsserver.watchOptions.fallbackPolling.fixedPollingInterval",
+                                "configuration.tsserver.watchOptions.fallbackPolling.priorityPollingInterval",
+                                "configuration.tsserver.watchOptions.fallbackPolling.dynamicPriorityPolling"
+                              ]
+                            },
+                            "synchronousWatchDirectory": {
+                              "type": "boolean",
+                              "description": "Disable deferred watching on directories. Deferred watching is useful when lots of file changes might occur at once (e.g. a change in node_modules from running npm install), but you might want to disable it with this flag for some less-common setups."
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    "typescript.tsserver.watchOptions": {
+                      "description": "Configure which watching strategies should be used to keep track of files and directories.",
+                      "default": "vscode",
+                      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.tsserver.watchOptions#` instead.",
+                      "oneOf": [
+                        {
+                          "type": "string",
+                          "const": "vscode",
+                          "description": "Use VS Code's file watchers instead of TypeScript's. Requires using TypeScript 5.4+ in the workspace."
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "watchFile": {
+                              "type": "string",
+                              "description": "Strategy for how individual files are watched.",
+                              "enum": [
+                                "fixedChunkSizePolling",
+                                "fixedPollingInterval",
+                                "priorityPollingInterval",
+                                "dynamicPriorityPolling",
+                                "useFsEvents",
+                                "useFsEventsOnParentDirectory"
+                              ],
+                              "enumDescriptions": [
+                                "Polls files in chunks at regular interval.",
+                                "Check every file for changes several times a second at a fixed interval.",
+                                "Check every file for changes several times a second, but use heuristics to check certain types of files less frequently than others.",
+                                "Use a dynamic queue where less-frequently modified files will be checked less often.",
+                                "Attempt to use the operating system/file system's native events for file changes.",
+                                "Attempt to use the operating system/file system's native events to listen for changes on a file's containing directories. This can use fewer file watchers, but might be less accurate."
+                              ],
+                              "default": "useFsEvents"
+                            },
+                            "watchDirectory": {
+                              "type": "string",
+                              "description": "Strategy for how entire directory trees are watched under systems that lack recursive file-watching functionality.",
+                              "enum": [
+                                "fixedChunkSizePolling",
+                                "fixedPollingInterval",
+                                "dynamicPriorityPolling",
+                                "useFsEvents"
+                              ],
+                              "enumDescriptions": [
+                                "Polls directories in chunks at regular interval.",
+                                "Check every directory for changes several times a second at a fixed interval.",
+                                "Use a dynamic queue where less-frequently modified directories will be checked less often.",
+                                "Attempt to use the operating system/file system's native events for directory changes."
+                              ],
+                              "default": "useFsEvents"
+                            },
+                            "fallbackPolling": {
+                              "type": "string",
+                              "description": "When using file system events, this option specifies the polling strategy that gets used when the system runs out of native file watchers and/or doesn't support native file watchers.",
+                              "enum": [
+                                "fixedPollingInterval",
+                                "priorityPollingInterval",
+                                "dynamicPriorityPolling"
+                              ],
+                              "enumDescriptions": [
+                                "configuration.tsserver.watchOptions.fallbackPolling.fixedPollingInterval",
+                                "configuration.tsserver.watchOptions.fallbackPolling.priorityPollingInterval",
+                                "configuration.tsserver.watchOptions.fallbackPolling.dynamicPriorityPolling"
+                              ]
+                            },
+                            "synchronousWatchDirectory": {
+                              "type": "boolean",
+                              "description": "Disable deferred watching on directories. Deferred watching is useful when lots of file changes might occur at once (e.g. a change in node_modules from running npm install), but you might want to disable it with this flag for some less-common setups."
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "type": "object",
+          "allOf": [
+            {
+              "$ref": "sublime://settings/LSP-plugin-base"
+            },
+            {
+              "$ref": "sublime://settings/LSP-tsgo#/definitions/PluginConfig"
+            }
+          ]
+        }
+      },
+      {
+        "file_patterns": [
+          "/*.sublime-project"
+        ],
+        "schema": {
+          "properties": {
+            "settings": {
+              "properties": {
+                "LSP": {
+                  "properties": {
+                    "LSP-tsgo": {
+                      "$ref": "sublime://settings/LSP-tsgo#/definitions/PluginConfig"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "file_patterns": [
+          "LSP.sublime-settings"
+        ],
+        "schema": {
+          "properties": {
+            "lsp_code_actions_on_save": {
+              "properties": {
+                "source.fixAll": {
+                  "type": "boolean"
+                },
+                "source.organizeImports": {
+                  "type": "boolean"
+                },
+                "source.removeUnusedImports": {
+                  "type": "boolean"
+                },
+                "source.sortImports": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,18 @@
+name: Check configuration schema changes
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'server/package.json'
+  workflow_dispatch:
+
+permissions:
+  pull-requests: write
+  repository-projects: write
+  contents: write
+
+jobs:
+  update-settings:
+    uses: sublimelsp/workflows/.github/workflows/update-settings.yaml@v2
