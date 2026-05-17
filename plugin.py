@@ -109,11 +109,13 @@ class VerbosityHoverHandler:
             and (contents := hover_response['contents']) and isinstance(contents, dict) and 'kind' in contents
         ):
             _, verbosity_level = self._last_hover_and_level
-            controls: list[str] = [
-                f'<kbd>{"[-](verbosity:-1)" if verbosity_level > 0 else "-"}</kbd>',
-                f'<kbd>{"[+](verbosity:+1)" if hover_response.get("canIncreaseVerbosity") else "+"}</kbd>',
-            ]
-            contents['value'] = f'{" ".join(controls)}\n{contents["value"]}'
+            can_increase_verbosity = hover_response.get('canIncreaseVerbosity')
+            if verbosity_level > 0 or can_increase_verbosity:
+                controls: list[str] = [
+                    f'<kbd>{"[-](verbosity:-1)" if verbosity_level > 0 else "-"}</kbd>',
+                    f'<kbd>{"[+](verbosity:+1)" if can_increase_verbosity else "+"}</kbd>',
+                ]
+                contents['value'] = f'{" ".join(controls)}\n{contents["value"]}'
 
     def handle_verbosity_change(self, session: Session, verbosity_delta: int) -> None:
         if not self._last_hover_and_level:
