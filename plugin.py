@@ -45,7 +45,7 @@ class LspTsgoPlugin(LspPlugin):
 
     def on_pre_send_request_async(self, request: ClientRequest, view: sublime.View | None) -> None:
         if request['method'] == 'initialize':
-            self._verbosity_hover_handler.on_session_initialize(request['params']['capabilities'])
+            self._verbosity_hover_handler.add_verbosity_hover_capability(request['params']['capabilities'])
             return
         if request['method'] == 'textDocument/hover':
             self._verbosity_hover_handler.on_hover_request(cast('HoverParamsWithVerbosity', request['params']))
@@ -85,7 +85,7 @@ class VerbosityHoverHandler:
     def __init__(self) -> None:
         self._last_hover_and_level: tuple[HoverParamsWithVerbosity, int] | None = None
 
-    def on_session_initialize(self, capabilities: ClientCapabilities) -> None:
+    def add_verbosity_hover_capability(self, capabilities: ClientCapabilities) -> None:
         capabilities['textDocument']['hover']['verbosityLevel'] = True  # pyright: ignore[reportTypedDictNotRequiredAccess, reportGeneralTypeIssues]
 
     def on_hover_request(self, hover_params: HoverParamsWithVerbosity) -> None:
