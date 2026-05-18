@@ -83,32 +83,32 @@ class VerbosityHover(Hover):
 class VerbosityHoverHandler:
 
     def __init__(self) -> None:
-        self._last_hover_and_level: tuple[HoverParamsWithVerbosity, int] | None = None
+        self._last_hover_params: HoverParamsWithVerbosity | None = None
 
     def add_verbosity_hover_capability(self, capabilities: ClientCapabilities) -> None:
         capabilities['textDocument']['hover']['verbosityLevel'] = True  # pyright: ignore[reportTypedDictNotRequiredAccess, reportGeneralTypeIssues]
 
     def on_hover_request(self, hover_params: HoverParamsWithVerbosity) -> None:
         if (
-            self._last_hover_and_level
-            and self._last_hover_and_level[0]['position'] == hover_params['position']
-            and self._last_hover_and_level[0]['textDocument']['uri'] == hover_params['textDocument']['uri']
+            self._last_hover_params
+            and self._last_hover_params['position'] == hover_params['position']
+            and self._last_hover_params['textDocument']['uri'] == hover_params['textDocument']['uri']
         ):
-            verbosity_level = self._last_hover_and_level[1]
+            verbosity_level = self._last_hover_params.get('verbosityLevel', 0)
         else:
             verbosity_level = 0
-        self._last_hover_and_level = (hover_params, verbosity_level)
+        self._last_hover_params = hover_params
         hover_params['verbosityLevel'] = verbosity_level
 
     def on_hover_response(self, hover_response: VerbosityHover | None) -> None:
         if not hover_response:
-            self._last_hover_and_level = None
+            self._last_hover_params = None
             return
         if (
-            self._last_hover_and_level
+            self._last_hover_params
             and (contents := hover_response['contents']) and isinstance(contents, dict) and 'kind' in contents
         ):
-            _, verbosity_level = self._last_hover_and_level
+            verbosity_level = self._last_hover_params.get('verbosityLevel', 0)
             can_increase_verbosity = hover_response.get('canIncreaseVerbosity')
             if verbosity_level > 0 or can_increase_verbosity:
                 controls: list[str] = [
@@ -118,11 +118,11 @@ class VerbosityHoverHandler:
                 contents['value'] = f'{" ".join(controls)}\n{contents["value"]}'
 
     def handle_verbosity_change(self, session: Session, verbosity_delta: int) -> None:
-        if not self._last_hover_and_level:
+        if not self._last_hover_params:
             return
-        hover_params, verbosity_level = self._last_hover_and_level
-        verbosity_level = max(0, verbosity_level + verbosity_delta)
-        self._last_hover_and_level = (hover_params, verbosity_level)
+        hover_params = self._last_hover_params
+        verbosity_level = max(0, hover_params.get('verbosityLevel', 0) + verbosity_delta)
+        hover_params['verbosityLevel'] = verbosity_level
         if session_buffer := session.get_session_buffer_for_uri_async(hover_params['textDocument']['uri']):
             view = session_buffer.get_view_in_group()
             point = position_to_offset(hover_params['position'], view)
