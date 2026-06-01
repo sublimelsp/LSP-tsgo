@@ -1,6 +1,6 @@
 # LSP-tsgo
 
-TypeScript and JavaScript support for Sublime's LSP plugin provided through [typescript-go](https://github.com/microsoft/typescript-go).
+TypeScript and JavaScript support for Sublime's LSP plugin provided through [typescript-go](https://github.com/microsoft/typescript-go) (and more specifically the [`@typescript/native-preview`](https://www.npmjs.com/package/@typescript/native-preview) package).
 
 > [!NOTE]
 > Microsoft plans to merge `typescript-go` into the main `typescript` branch at some point. This package will likely follow and get merged into [LSP-typescript](https://packagecontrol.io/packages/LSP-typescript) then.
