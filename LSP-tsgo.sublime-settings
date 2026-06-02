@@ -32,6 +32,33 @@
 		"js/ts.preferences.includePackageJsonAutoImports": "auto",
 		// Enable/disable searching `package.json` dependencies for available auto imports.
 		"typescript.preferences.includePackageJsonAutoImports": "auto",
+		// Specify glob patterns of files to exclude from auto imports. Relative paths are resolved relative to the workspace root. Patterns are evaluated using tsconfig.json [`exclude`](https://www.typescriptlang.org/tsconfig#exclude) semantics.
+		"js/ts.preferences.autoImportFileExcludePatterns": null,
+		// Specify glob patterns of files to exclude from auto imports. Relative paths are resolved relative to the workspace root. Patterns are evaluated using tsconfig.json [`exclude`](https://www.typescriptlang.org/tsconfig#exclude) semantics.
+		"javascript.preferences.autoImportFileExcludePatterns": null,
+		// Specify glob patterns of files to exclude from auto imports. Relative paths are resolved relative to the workspace root. Patterns are evaluated using tsconfig.json [`exclude`](https://www.typescriptlang.org/tsconfig#exclude) semantics.
+		"typescript.preferences.autoImportFileExcludePatterns": null,
+		// Specify regular expressions to exclude auto imports with matching import specifiers. Examples:
+		//
+		// - `^node:`
+		// - `lib/internal` (slashes don't need to be escaped...)
+		// - `/lib\/internal/i` (...unless including surrounding slashes for `i` or `u` flags)
+		// - `^lodash$` (only allow subpath imports from lodash)
+		"js/ts.preferences.autoImportSpecifierExcludeRegexes": null,
+		// Specify regular expressions to exclude auto imports with matching import specifiers. Examples:
+		//
+		// - `^node:`
+		// - `lib/internal` (slashes don't need to be escaped...)
+		// - `/lib\/internal/i` (...unless including surrounding slashes for `i` or `u` flags)
+		// - `^lodash$` (only allow subpath imports from lodash)
+		"javascript.preferences.autoImportSpecifierExcludeRegexes": null,
+		// Specify regular expressions to exclude auto imports with matching import specifiers. Examples:
+		//
+		// - `^node:`
+		// - `lib/internal` (slashes don't need to be escaped...)
+		// - `/lib\/internal/i` (...unless including surrounding slashes for `i` or `u` flags)
+		// - `^lodash$` (only allow subpath imports from lodash)
+		"typescript.preferences.autoImportSpecifierExcludeRegexes": null,
 		// Include the `type` keyword in auto-imports whenever possible. Requires using TypeScript 5.3+ in the workspace.
 		"js/ts.preferences.preferTypeOnlyAutoImports": false,
 		// Include the `type` keyword in auto-imports whenever possible. Requires using TypeScript 5.3+ in the workspace.
@@ -48,6 +75,12 @@
 		"javascript.preferences.renameMatchingJsxTags": true,
 		// When on a JSX tag, try to rename the matching tag instead of renaming the symbol. Requires using TypeScript 5.1+ in the workspace.
 		"typescript.preferences.renameMatchingJsxTags": true,
+		// Advanced preferences that control how imports are ordered.
+		"js/ts.preferences.organizeImports": null,
+		// Advanced preferences that control how imports are ordered.
+		"javascript.preferences.organizeImports": null,
+		// Advanced preferences that control how imports are ordered.
+		"typescript.preferences.organizeImports": null,
 		// Enable/disable the default JavaScript and TypeScript formatter.
 		"js/ts.format.enabled": true,
 		// Enable/disable default JavaScript formatter.
