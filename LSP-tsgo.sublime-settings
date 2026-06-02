@@ -76,11 +76,11 @@
 		// When on a JSX tag, try to rename the matching tag instead of renaming the symbol. Requires using TypeScript 5.1+ in the workspace.
 		"typescript.preferences.renameMatchingJsxTags": true,
 		// Advanced preferences that control how imports are ordered.
-		"js/ts.preferences.organizeImports": {},
+		"js/ts.preferences.organizeImports": null,
 		// Advanced preferences that control how imports are ordered.
-		"javascript.preferences.organizeImports": {},
+		"javascript.preferences.organizeImports": null,
 		// Advanced preferences that control how imports are ordered.
-		"typescript.preferences.organizeImports": {},
+		"typescript.preferences.organizeImports": null,
 		// Enable/disable the default JavaScript and TypeScript formatter.
 		"js/ts.format.enabled": true,
 		// Enable/disable default JavaScript formatter.

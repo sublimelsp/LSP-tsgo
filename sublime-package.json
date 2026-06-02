@@ -339,7 +339,8 @@
                       "items": {
                         "type": "string"
                       },
-                      "markdownDescription": "Specify glob patterns of files to exclude from auto imports. Relative paths are resolved relative to the workspace root. Patterns are evaluated using tsconfig.json [`exclude`](https://www.typescriptlang.org/tsconfig#exclude) semantics."
+                      "markdownDescription": "Specify glob patterns of files to exclude from auto imports. Relative paths are resolved relative to the workspace root. Patterns are evaluated using tsconfig.json [`exclude`](https://www.typescriptlang.org/tsconfig#exclude) semantics.",
+                      "default": null
                     },
                     "javascript.preferences.autoImportFileExcludePatterns": {
                       "type": [
@@ -350,7 +351,8 @@
                         "type": "string"
                       },
                       "markdownDescription": "Specify glob patterns of files to exclude from auto imports. Relative paths are resolved relative to the workspace root. Patterns are evaluated using tsconfig.json [`exclude`](https://www.typescriptlang.org/tsconfig#exclude) semantics.",
-                      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.preferences.autoImportFileExcludePatterns#` instead."
+                      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.preferences.autoImportFileExcludePatterns#` instead.",
+                      "default": null
                     },
                     "typescript.preferences.autoImportFileExcludePatterns": {
                       "type": [
@@ -361,7 +363,8 @@
                         "type": "string"
                       },
                       "markdownDescription": "Specify glob patterns of files to exclude from auto imports. Relative paths are resolved relative to the workspace root. Patterns are evaluated using tsconfig.json [`exclude`](https://www.typescriptlang.org/tsconfig#exclude) semantics.",
-                      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.preferences.autoImportFileExcludePatterns#` instead."
+                      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.preferences.autoImportFileExcludePatterns#` instead.",
+                      "default": null
                     },
                     "js/ts.preferences.autoImportSpecifierExcludeRegexes": {
                       "type": [
@@ -371,7 +374,8 @@
                       "items": {
                         "type": "string"
                       },
-                      "markdownDescription": "Specify regular expressions to exclude auto imports with matching import specifiers. Examples:\n\n- `^node:`\n- `lib/internal` (slashes don't need to be escaped...)\n- `/lib\\/internal/i` (...unless including surrounding slashes for `i` or `u` flags)\n- `^lodash$` (only allow subpath imports from lodash)"
+                      "markdownDescription": "Specify regular expressions to exclude auto imports with matching import specifiers. Examples:\n\n- `^node:`\n- `lib/internal` (slashes don't need to be escaped...)\n- `/lib\\/internal/i` (...unless including surrounding slashes for `i` or `u` flags)\n- `^lodash$` (only allow subpath imports from lodash)",
+                      "default": null
                     },
                     "javascript.preferences.autoImportSpecifierExcludeRegexes": {
                       "type": [
@@ -382,7 +386,8 @@
                         "type": "string"
                       },
                       "markdownDescription": "Specify regular expressions to exclude auto imports with matching import specifiers. Examples:\n\n- `^node:`\n- `lib/internal` (slashes don't need to be escaped...)\n- `/lib\\/internal/i` (...unless including surrounding slashes for `i` or `u` flags)\n- `^lodash$` (only allow subpath imports from lodash)",
-                      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.preferences.autoImportSpecifierExcludeRegexes#` instead."
+                      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.preferences.autoImportSpecifierExcludeRegexes#` instead.",
+                      "default": null
                     },
                     "typescript.preferences.autoImportSpecifierExcludeRegexes": {
                       "type": [
@@ -393,7 +398,8 @@
                         "type": "string"
                       },
                       "markdownDescription": "Specify regular expressions to exclude auto imports with matching import specifiers. Examples:\n\n- `^node:`\n- `lib/internal` (slashes don't need to be escaped...)\n- `/lib\\/internal/i` (...unless including surrounding slashes for `i` or `u` flags)\n- `^lodash$` (only allow subpath imports from lodash)",
-                      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.preferences.autoImportSpecifierExcludeRegexes#` instead."
+                      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.preferences.autoImportSpecifierExcludeRegexes#` instead.",
+                      "default": null
                     },
                     "js/ts.preferences.preferTypeOnlyAutoImports": {
                       "type": "boolean",
@@ -441,7 +447,10 @@
                       "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.preferences.renameMatchingJsxTags#` instead."
                     },
                     "js/ts.preferences.organizeImports": {
-                      "type": "object",
+                      "type": [
+                        "object",
+                        "null"
+                      ],
                       "markdownDescription": "Advanced preferences that control how imports are ordered.",
                       "properties": {
                         "caseSensitivity": {
@@ -516,10 +525,14 @@
                           ],
                           "default": "default"
                         }
-                      }
+                      },
+                      "default": null
                     },
                     "javascript.preferences.organizeImports": {
-                      "type": "object",
+                      "type": [
+                        "object",
+                        "null"
+                      ],
                       "markdownDescription": "Advanced preferences that control how imports are ordered.",
                       "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.preferences.organizeImports#` instead.",
                       "properties": {
@@ -595,10 +608,14 @@
                           ],
                           "default": "default"
                         }
-                      }
+                      },
+                      "default": null
                     },
                     "typescript.preferences.organizeImports": {
-                      "type": "object",
+                      "type": [
+                        "object",
+                        "null"
+                      ],
                       "markdownDescription": "Advanced preferences that control how imports are ordered.",
                       "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.preferences.organizeImports#` instead.",
                       "properties": {
@@ -674,7 +691,8 @@
                           ],
                           "default": "default"
                         }
-                      }
+                      },
+                      "default": null
                     },
                     "js/ts.format.enabled": {
                       "type": "boolean",

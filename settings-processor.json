@@ -7,10 +7,6 @@
             "options": "[.contributes.configuration[].properties | select(. != null)] | add"
         },
         {
-            "type": "jq",
-            "options": "walk(if type == \"object\" then del(.scope, .order, .keywords) else . end)"
-        },
-        {
             "type": "remove_keys",
             "options": [
                 "javascript.suggestionActions.enabled",
@@ -51,6 +47,14 @@
                 "typescript.tsserver.web.projectWideIntellisense.enabled",
                 "typescript.tsserver.web.projectWideIntellisense.suppressSemanticErrors"
             ]
+        },
+        {
+            "type": "jq",
+            "options": "walk(if type == \"object\" then del(.scope, .order, .keywords) else . end)"
+        },
+        {
+            "type": "jq",
+            "options": "with_entries(if (.value | has(\"default\") | not) and (.value | has(\"type\")) then .value.type |= (if type == \"array\" then (. + [\"null\"] | unique) else [., \"null\"] end) | .value.default = null else . end)"
         }
     ],
     "render_templates": [
