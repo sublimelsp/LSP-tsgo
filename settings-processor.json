@@ -11,6 +11,10 @@
             "options": "walk(if type == \"object\" then del(.scope, .order, .keywords) else . end)"
         },
         {
+            "type": "jq",
+            "options": "with_entries(if (.value | has(\"default\") | not) and (.value | has(\"type\")) then .value.type |= (if type == \"array\" then . + [\"null\"] else [., \"null\"] end) else . end)"
+        },
+        {
             "type": "remove_keys",
             "options": [
                 "javascript.suggestionActions.enabled",
