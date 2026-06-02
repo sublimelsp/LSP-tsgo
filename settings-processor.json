@@ -12,7 +12,7 @@
         },
         {
             "type": "jq",
-            "options": "with_entries(if (.value | has(\"default\") | not) and (.value | has(\"type\")) then .value.type |= (if type == \"array\" then . + [\"null\"] else [., \"null\"] end) else . end)"
+            "options": "def add_null: if has(\"type\") and (has(\"default\") | not) then .type |= (if type == \"array\" then (. + [\"null\"] | unique) else [., \"null\"] end) | .default = null else . end; with_entries(.value |= (add_null | if has(\"items\") then .items |= add_null else . end))"
         },
         {
             "type": "remove_keys",
