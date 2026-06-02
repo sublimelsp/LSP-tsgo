@@ -340,8 +340,7 @@
                         "type": [
                           "string",
                           "null"
-                        ],
-                        "default": null
+                        ]
                       },
                       "markdownDescription": "Specify glob patterns of files to exclude from auto imports. Relative paths are resolved relative to the workspace root. Patterns are evaluated using tsconfig.json [`exclude`](https://www.typescriptlang.org/tsconfig#exclude) semantics.",
                       "default": null
@@ -355,8 +354,7 @@
                         "type": [
                           "string",
                           "null"
-                        ],
-                        "default": null
+                        ]
                       },
                       "markdownDescription": "Specify glob patterns of files to exclude from auto imports. Relative paths are resolved relative to the workspace root. Patterns are evaluated using tsconfig.json [`exclude`](https://www.typescriptlang.org/tsconfig#exclude) semantics.",
                       "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.preferences.autoImportFileExcludePatterns#` instead.",
@@ -371,8 +369,7 @@
                         "type": [
                           "string",
                           "null"
-                        ],
-                        "default": null
+                        ]
                       },
                       "markdownDescription": "Specify glob patterns of files to exclude from auto imports. Relative paths are resolved relative to the workspace root. Patterns are evaluated using tsconfig.json [`exclude`](https://www.typescriptlang.org/tsconfig#exclude) semantics.",
                       "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.preferences.autoImportFileExcludePatterns#` instead.",
@@ -387,8 +384,7 @@
                         "type": [
                           "string",
                           "null"
-                        ],
-                        "default": null
+                        ]
                       },
                       "markdownDescription": "Specify regular expressions to exclude auto imports with matching import specifiers. Examples:\n\n- `^node:`\n- `lib/internal` (slashes don't need to be escaped...)\n- `/lib\\/internal/i` (...unless including surrounding slashes for `i` or `u` flags)\n- `^lodash$` (only allow subpath imports from lodash)",
                       "default": null
@@ -402,8 +398,7 @@
                         "type": [
                           "string",
                           "null"
-                        ],
-                        "default": null
+                        ]
                       },
                       "markdownDescription": "Specify regular expressions to exclude auto imports with matching import specifiers. Examples:\n\n- `^node:`\n- `lib/internal` (slashes don't need to be escaped...)\n- `/lib\\/internal/i` (...unless including surrounding slashes for `i` or `u` flags)\n- `^lodash$` (only allow subpath imports from lodash)",
                       "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.preferences.autoImportSpecifierExcludeRegexes#` instead.",
@@ -418,8 +413,7 @@
                         "type": [
                           "string",
                           "null"
-                        ],
-                        "default": null
+                        ]
                       },
                       "markdownDescription": "Specify regular expressions to exclude auto imports with matching import specifiers. Examples:\n\n- `^node:`\n- `lib/internal` (slashes don't need to be escaped...)\n- `/lib\\/internal/i` (...unless including surrounding slashes for `i` or `u` flags)\n- `^lodash$` (only allow subpath imports from lodash)",
                       "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.preferences.autoImportSpecifierExcludeRegexes#` instead.",
