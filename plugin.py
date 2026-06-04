@@ -35,7 +35,7 @@ class LspTsgoPlugin(LspPlugin):
             cls.plugin_storage_path,
             ResourcePath('Packages', package_name, 'server'),
             Path('node_modules', '@typescript', 'native-preview', 'bin', 'tsgo.js'),
-            '>=20',
+            node_version_requirement='>=20',
         )
 
     @override
