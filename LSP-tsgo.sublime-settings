@@ -514,7 +514,4 @@
 		"file", // regular files
 		"buffer", // in-memory buffers
 	],
-	"experimental_capabilities": {
-		"hoverVerbosityLevel": true
-	}
 }
