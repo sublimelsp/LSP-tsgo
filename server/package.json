@@ -2,6 +2,6 @@
   "name": "lsp-tsgo",
   "private": true,
   "dependencies": {
-    "@typescript/native-preview": "7.0.0-dev.20260527.2"
+    "@typescript/native-preview": "7.0.0-dev.20260604.1"
   }
 }
