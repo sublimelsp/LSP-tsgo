@@ -1,16 +1,26 @@
 from __future__ import annotations
 
+from functools import partial
 from LSP.plugin import ClientRequest
 from LSP.plugin import LspPlugin
+from LSP.plugin import LspTextCommand
 from LSP.plugin import OnPreStartContext
 from LSP.plugin import Promise
+from LSP.plugin import Request
 from LSP.plugin import ServerResponse
 from LSP.plugin import Session
 from LSP.plugin import uri_handler
+from LSP.plugin.core.registry import get_position
+from LSP.plugin.core.views import get_symbol_kind_from_scope
 from LSP.plugin.core.views import position_to_offset
+from LSP.plugin.core.views import text_document_position_params
+from LSP.plugin.locationpicker import LocationPicker
+from LSP.plugin.locationpicker import open_location_async
 from LSP.protocol import DocumentUri
 from LSP.protocol import Hover
 from LSP.protocol import HoverParams
+from LSP.protocol import Location
+from LSP.protocol import LocationLink
 from lsp_utils import NodeManager
 from pathlib import Path
 from sublime_lib import ResourcePath
@@ -120,3 +130,85 @@ class VerbosityHoverHandler:
             view = session_buffer.get_view_in_group()
             point = position_to_offset(hover_params['position'], view)
             view.run_command('lsp_hover', {'point': point})
+
+
+# tsgo's "Go to Source Definition": resolves a declaration in a .d.ts to the .js (or, through a
+# declaration map, the .ts) it was generated from. It is a custom request rather than a standard one,
+# the same the VS Code extension for tsgo sends, and the server announces it in its experimental
+# capabilities.
+SOURCE_DEFINITION_METHOD = 'custom/textDocument/sourceDefinition'
+SOURCE_DEFINITION_CAPABILITY = 'experimental.customSourceDefinitionProvider'
+
+
+class LspTsgoGotoSourceDefinitionCommand(LspTextCommand):
+    """Go to the implementation behind a declaration file.
+
+    With `fallback` (the default) the ordinary definition is used when the server has no source
+    definition to offer, e.g. the symbol already lives in TypeScript source, or the server predates
+    the request. The command is then always safe to bind in place of `lsp_symbol_definition`.
+    """
+
+    capability = 'definitionProvider'
+
+    def run(
+        self,
+        _: sublime.Edit,
+        event: dict | None = None,
+        point: int | None = None,
+        side_by_side: bool = False,
+        force_group: bool = True,
+        group: int = -1,
+        fallback: bool = True,
+    ) -> None:
+        position = get_position(self.view, event, point)
+        session = self.best_session(SOURCE_DEFINITION_CAPABILITY, position)
+        if session is None or position is None:
+            self._fallback(fallback, side_by_side, force_group, group)
+            return
+        params = text_document_position_params(self.view, position)
+        request: Request[Any, Location | list[Location] | list[LocationLink] | None] = Request(
+            SOURCE_DEFINITION_METHOD, params, self.view, progress=True
+        )
+        session.send_request(
+            request,
+            partial(self._on_result_async, session, side_by_side, force_group, group, position, fallback),
+            lambda _error: self._fallback(fallback, side_by_side, force_group, group),
+        )
+
+    def _on_result_async(
+        self,
+        session: Session,
+        side_by_side: bool,
+        force_group: bool,
+        group: int,
+        position: int,
+        fallback: bool,
+        response: Location | list[Location] | list[LocationLink] | None,
+    ) -> None:
+        if isinstance(response, dict):
+            locations: list[Location] | list[LocationLink] = [response]
+        elif isinstance(response, list):
+            locations = response
+        else:
+            locations = []
+        if not locations:
+            self._fallback(fallback, side_by_side, force_group, group)
+            return
+        self.view.run_command('add_jump_record', {'selection': [(r.a, r.b) for r in self.view.sel()]})
+        if len(locations) == 1:
+            open_location_async(session, locations[0], side_by_side, force_group, group)
+            return
+        placeholder = 'Source definitions of ' + self.view.substr(self.view.word(position))
+        kind = get_symbol_kind_from_scope(self.view.scope_name(position))
+        sublime.set_timeout(
+            partial(LocationPicker, self.view, session, locations, side_by_side, force_group, group, placeholder, kind)
+        )
+
+    def _fallback(self, fallback: bool, side_by_side: bool, force_group: bool, group: int) -> None:
+        if not fallback:
+            sublime.status_message('No source definition found')
+            return
+        self.view.run_command(
+            'lsp_symbol_definition',
+            {'side_by_side': side_by_side, 'force_group': force_group, 'group': group, 'fallback': True},
+        )

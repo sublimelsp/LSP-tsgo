@@ -14,6 +14,24 @@ TypeScript and JavaScript support for Sublime's LSP plugin provided through [typ
 
 Open the configuration file using the Command Palette `Preferences: LSP-tsgo Settings` command or open it from the Sublime menu.
 
+## Go to Source Definition
+
+`LSP: Goto Definition` on a symbol from a dependency lands in its `.d.ts`. The `LSP-tsgo: Goto Source Definition` command (`lsp_tsgo_goto_source_definition`) asks the server for the implementation behind that declaration instead: the `.js` shipped next to the typings, or the original `.ts` when a declaration map is available. When the server has nothing to map (the symbol is already in source, or the server is too old to support the request) the command falls back to the ordinary definition, so it can take over a definition key binding:
+
+```json
+{
+    "keys": ["super+i"],
+    "command": "lsp_tsgo_goto_source_definition",
+    "args": {"side_by_side": false, "force_group": true, "group": -1, "fallback": true},
+    "context": [
+        {"key": "lsp.session_with_capability", "operand": "definitionProvider"},
+        {"key": "selector", "operator": "equal", "operand": "source.js, source.jsx, source.ts, source.tsx"}
+    ]
+}
+```
+
+Pass `"fallback": false` to get a status message instead of the fallback.
+
 ## Code Actions on Save
 
 The server supports the following code actions that can be specified in the global `lsp_code_actions_on_save` setting and run on saving files:
