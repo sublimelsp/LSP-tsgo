@@ -1,5 +1,9 @@
 [
     {
+        "caption": "LSP-tsgo: Goto Source Definition",
+        "command": "lsp_tsgo_goto_source_definition"
+    },
+    {
         "caption": "Preferences: LSP-tsgo Settings",
         "command": "edit_settings",
         "args": {

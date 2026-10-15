@@ -1,16 +1,23 @@
 from __future__ import annotations
 
+from functools import partial
 from LSP.plugin import ClientRequest
 from LSP.plugin import LspPlugin
+from LSP.plugin import LspTextCommand
 from LSP.plugin import OnPreStartContext
 from LSP.plugin import position_to_offset
 from LSP.plugin import Promise
+from LSP.plugin import Request
 from LSP.plugin import ServerResponse
 from LSP.plugin import Session
+from LSP.plugin import text_document_position_params
 from LSP.plugin import uri_handler
 from LSP.protocol import DocumentUri
 from LSP.protocol import Hover
 from LSP.protocol import HoverParams
+from LSP.protocol import Location
+from LSP.protocol import LocationLink
+from LSP.protocol import TextDocumentPositionParams
 from lsp_utils import NodeManager
 from pathlib import Path
 from sublime_lib import ResourcePath
@@ -120,3 +127,72 @@ class VerbosityHoverHandler:
             view = session_buffer.get_view_in_group()
             point = position_to_offset(view, hover_params['position'])
             view.run_command('lsp_hover', {'point': point})
+
+
+# tsgo's "Go to Source Definition": resolves a declaration in a .d.ts to the .js (or, through a
+# declaration map, the .ts) it was generated from. It is a custom request rather than a standard one,
+# the same the VS Code extension for tsgo sends, and the server announces it in its experimental
+# capabilities.
+SOURCE_DEFINITION_METHOD = 'custom/textDocument/sourceDefinition'
+SOURCE_DEFINITION_CAPABILITY = 'experimental.customSourceDefinitionProvider'
+
+
+class LspTsgoGotoSourceDefinitionCommand(LspTextCommand):
+    """Go to the implementation behind a declaration file.
+
+    With `fallback` (the default) the ordinary definition is used when the server has no source
+    definition to offer, e.g. the symbol already lives in TypeScript source, or the server predates
+    the request. The command is then always safe to bind in place of `lsp_symbol_definition`.
+    """
+
+    capability = 'definitionProvider'
+
+    def run(self, _: sublime.Edit, event: dict | None = None, point: int | None = None, fallback: bool = True) -> None:
+        if point is None and event and 'x' in event and 'y' in event:
+            point = self.view.window_to_text((event['x'], event['y']))
+        position = point if point is not None else next((r.b for r in self.view.sel()), None)
+        session = self.best_session(SOURCE_DEFINITION_CAPABILITY, position)
+        if session is None or position is None:
+            self._fallback(fallback)
+            return
+        params = text_document_position_params(self.view, position)
+        request: Request[Any, Location | list[Location] | list[LocationLink] | None] = Request(
+            SOURCE_DEFINITION_METHOD, params, self.view, progress=True
+        )
+        session.send_request(
+            request,
+            partial(self._on_result_async, session, params, fallback),
+            lambda _error: self._fallback(fallback),
+        )
+
+    def _on_result_async(
+        self,
+        session: Session,
+        params: TextDocumentPositionParams,
+        fallback: bool,
+        response: Location | list[Location] | list[LocationLink] | None,
+    ) -> None:
+        if isinstance(response, dict):
+            response = [response]
+        locations = [to_location(location) for location in response or []]
+        if not locations:
+            self._fallback(fallback)
+            return
+        # Handled by LSP itself: opens a single location directly, or shows the location picker.
+        session.execute_command({
+            'command': 'editor.action.showReferences',
+            'arguments': [params['textDocument']['uri'], params['position'], locations],
+        }, view=self.view)
+
+    def _fallback(self, fallback: bool) -> None:
+        if not fallback:
+            sublime.status_message('No source definition found')
+            return
+        self.view.run_command('lsp_symbol_definition', {'fallback': True})
+
+
+def to_location(location: Location | LocationLink) -> Location:
+    if 'targetUri' in location:
+        location = cast('LocationLink', location)
+        return {'uri': location['targetUri'], 'range': location['targetSelectionRange']}
+    return cast('Location', location)
