@@ -9,10 +9,11 @@ on:
   workflow_dispatch:
 
 permissions:
+  contents: read
   pull-requests: write
-  repository-projects: write
-  contents: write
 
 jobs:
   update-settings:
-    uses: sublimelsp/workflows/.github/workflows/update-settings.yaml@v2
+    uses: sublimelsp/workflows/.github/workflows/update-settings.yaml@v3
+    secrets:
+      SUBLIMELSP_APP_PRIVATE_KEY: ${{ secrets.SUBLIMELSP_APP_PRIVATE_KEY }}
