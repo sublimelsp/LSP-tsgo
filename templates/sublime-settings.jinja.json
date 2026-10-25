@@ -1,4 +1,7 @@
 {
+	// The text next to the server name in the status bar. `$version` is the TypeScript version and `$source` is
+	// `bundled` or `server_path`. Set to an empty string to show nothing.
+	"status_text": "$version, $source",
 	"settings": {
 		{{ settings | indent('\t\t') }}
 	},

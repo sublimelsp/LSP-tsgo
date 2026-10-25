@@ -18,6 +18,7 @@ from LSP.protocol import HoverParams
 from LSP.protocol import Location
 from LSP.protocol import LocationLink
 from LSP.protocol import TextDocumentPositionParams
+from LSP.protocol import InitializeResult
 from lsp_utils import NodeManager
 from pathlib import Path
 from sublime_lib import ResourcePath
@@ -44,6 +45,16 @@ class LspTsgoPlugin(LspPlugin):
             node_version_requirement='>=20',
         )
 
+    def _show_typescript_version(self, result: InitializeResult) -> None:
+        session = self.weaksession()
+        status_text = session.config.root_settings.get('status_text') if session else None
+        if not session or not status_text or not isinstance(status_text, str):
+            return
+        version = result.get('serverInfo', {}).get('version', '')
+        server_path = session.config.root_settings.get('server_path')
+        source = 'bundled' if not server_path or server_path == 'auto' else 'server_path'
+        session.set_config_status_async(status_text.replace('$version', version).replace('$source', source))
+
     @override
     def __init__(self, *args: Any, **kwargs: Any) -> None:
         super().__init__(*args, **kwargs)
@@ -55,6 +66,9 @@ class LspTsgoPlugin(LspPlugin):
             return
 
     def on_server_response_async(self, response: ServerResponse) -> None:
+        if response['method'] == 'initialize':
+            self._show_typescript_version(cast('InitializeResult', response['result']))
+            return
         if response['method'] == 'textDocument/hover':
             self._verbosity_hover_handler.on_hover_response(cast('VerbosityHover | None', response['result']))
             return
