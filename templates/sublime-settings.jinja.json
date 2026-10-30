@@ -2,6 +2,10 @@
 	// The text next to the server name in the status bar. `$version` is the TypeScript version and `$source` is
 	// `bundled` or `server_path`. Set to an empty string to show nothing.
 	"status_text": "$version, $source",
+	"initialization_options": {
+		// The verbosity of the server logs: 0 - off, 1 - trace, 2 - debug, 3 - info, 4 - warning, 5 - error.
+		"logVerbosity": 4
+	},
 	"settings": {
 		{{ settings | indent('\t\t') }}
 	},

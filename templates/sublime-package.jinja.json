@@ -15,6 +15,32 @@
                   "default": "$version, $source",
                   "markdownDescription": "The text next to the server name in the status bar. `$version` is the TypeScript version and `$source` is `bundled` or `server_path`. Set to an empty string to show nothing."
                 },
+                "initialization_options": {
+                  "type": "object",
+                  "properties": {
+                    "logVerbosity": {
+                      "type": "integer",
+                      "default": 4,
+                      "enum": [
+                        0,
+                        1,
+                        2,
+                        3,
+                        4,
+                        5
+                      ],
+                      "enumDescriptions": [
+                        "Off",
+                        "Trace",
+                        "Debug",
+                        "Info",
+                        "Warning",
+                        "Error"
+                      ],
+                      "markdownDescription": "The verbosity of the server logs. Messages less severe than the selected level are not sent."
+                    }
+                  }
+                },
                 "server_path": {
                   "type": "string",
                   "default": "auto",
