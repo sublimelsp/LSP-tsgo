@@ -2,48 +2,231 @@ from __future__ import annotations
 
 from LSP.plugin import ClientRequest
 from LSP.plugin import Error
+from LSP.plugin import IsApplicableContext
 from LSP.plugin import LspPlugin
 from LSP.plugin import LspTextCommand
 from LSP.plugin import OnPreStartContext
+from LSP.plugin import parse_uri
 from LSP.plugin import position_to_offset
 from LSP.plugin import Promise
 from LSP.plugin import Request
 from LSP.plugin import ServerResponse
 from LSP.plugin import Session
 from LSP.plugin import text_document_position_params
+from LSP.plugin import uri_from_view
 from LSP.plugin import uri_handler
 from LSP.protocol import DocumentUri
 from LSP.protocol import Hover
 from LSP.protocol import HoverParams
+from LSP.protocol import InitializeResult
 from LSP.protocol import Location
 from LSP.protocol import LocationLink
+from LSP.protocol import LSPAny
 from LSP.protocol import TextDocumentPositionParams
-from LSP.protocol import InitializeResult
 from lsp_utils import NodeManager
 from pathlib import Path
 from sublime_lib import ResourcePath
 from typing import Any
 from typing import cast
 from typing import final
+from typing import TypedDict
 from typing_extensions import NotRequired
 from typing_extensions import override
+from weakref import WeakSet
+import json
+import os
 import sublime
+import sublime_plugin
+
+
+def log(message: str) -> None:
+    print(f'[{__package__}] {message}')
+
+
+class ContentMapperContribution(TypedDict):
+    """An entry of a `typescript-content-mappers.json` file that another package contributes."""
+    # Name of the content mapper's npm package.
+    name: str
+    # File extensions that the content mapper handles.
+    extensions: list[str]
+    # Selector of the views that this server attaches to, for the files that the content mapper handles.
+    selector: NotRequired[str]
+    # Content mapper options, used for files outside any tsconfig.
+    options: NotRequired[dict[str, LSPAny]]
+    # Name of the package that contributes the content mapper.
+    contributor: NotRequired[str]
+
+
+def find_content_mapper_contributions() -> list[ContentMapperContribution]:
+    contributions: list[ContentMapperContribution] = []
+    for resource in ResourcePath.glob_resources('typescript-content-mappers.json'):
+        try:
+            contributed = sublime.decode_value(resource.read_text())
+        except ValueError:
+            log(f'Failed parsing "{resource.file_path()}"')
+            continue
+        if not isinstance(contributed, list):
+            log(f'Invalid contents of "{resource.file_path()}"')
+            continue
+        for entry in cast('list[ContentMapperContribution]', contributed):
+            contribution: ContentMapperContribution = {
+                'name': entry['name'],
+                'extensions': entry['extensions'],
+                'contributor': resource.parts[1],
+            }
+            if 'selector' in entry:
+                contribution['selector'] = entry['selector']
+            if 'options' in entry:
+                contribution['options'] = entry['options']
+            contributions.append(contribution)
+    return contributions
+
+
+def to_server_contribution(contribution: ContentMapperContribution, location: str) -> dict[str, LSPAny] | None:
+    """
+    Converts a contribution to the format of `custom/setContentMapperContributions`, with the manifest from the
+    `typescript.contentMapper` field of the content mapper's `package.json`.
+
+    :param location: The directory containing the content mapper's package, as reported by its contributor.
+    """
+    package_path = Path(location) / contribution['name']
+    try:
+        package_json = json.loads((package_path / 'package.json').read_text(encoding='utf-8'))
+    except (OSError, ValueError) as error:
+        log(f'Ignoring content mapper with an unreadable package.json at "{package_path}": {error}')
+        return None
+    try:
+        manifest = package_json['typescript']['contentMapper']
+    except (KeyError, TypeError):
+        log(f'Ignoring content mapper without a manifest at "{package_path}"')
+        return None
+    server_manifest: dict[str, LSPAny] = {
+        'name': package_json.get('name', contribution['name']),
+        'exec': manifest['exec'],
+        # The content mapper resolves `exec` relative to this directory.
+        'cwd': str(package_path.resolve()),
+    }
+    if 'version' in package_json:
+        server_manifest['version'] = package_json['version']
+    for key in ('compilerOptions', 'dynamicConfig', 'outputExtensions'):
+        if key in manifest:
+            server_manifest[key] = manifest[key]
+    return {
+        'contributorId': contribution.get('contributor', ''),
+        'extensions': contribution['extensions'],
+        'inferredProjectContribution': {
+            'options': contribution.get('options', {}),
+            'manifest': server_manifest,
+        },
+    }
 
 
 @final
 class LspTsgoPlugin(LspPlugin):
+    content_mapper_contributions: list[ContentMapperContribution] | None = None
+    # Directories containing the content mappers, by name. Reported by the contributors once they know them.
+    content_mapper_locations: dict[str, str] = {}
+    initialized_plugins: WeakSet[LspTsgoPlugin] = WeakSet()
+    resolved_server_direcotry: Path | None = None
+
+    @classmethod
+    @override
+    def is_applicable_async(cls, context: IsApplicableContext) -> bool:
+        if super().is_applicable_async(context):
+            return True
+        # Content mappers only run with `runExternalCode`, so other files are left to their own servers without it.
+        # It is enabled by default.
+        if not context.configuration.initialization_options.get('runExternalCode'):
+            return False
+        scheme, _ = parse_uri(uri_from_view(context.view))
+        if scheme in context.configuration.schemes and (syntax := context.view.syntax()):
+            # Projects with a tsconfig load their content mappers from the project, so this doesn't check whether the
+            # contributed content mapper is installed.
+            for contribution in cls._get_content_mapper_contributions():
+                if (selector := contribution.get('selector')) and sublime.score_selector(syntax.scope, selector) > 0:
+                    return True
+        return False
 
     @classmethod
     @override
     def on_pre_start_async(cls, context: OnPreStartContext) -> None:
         package_name = cls.plugin_storage_path.name
-        NodeManager.on_pre_start_async(
+        resolved_server_direcotry = NodeManager.on_pre_start_async(
             context,
             cls.plugin_storage_path,
             ResourcePath('Packages', package_name, 'server'),
             Path('node_modules', 'typescript', 'lib', 'tsc.js'),
-            node_version_requirement='>=20',
+            # Also covers content mappers, which run on the same Node.js (e.g. `@vue/content-mapper`).
+            node_version_requirement='^20.19.0 || >=22.12.0',
         )
+        if resolved_server_direcotry:
+            cls.resolved_server_direcotry = resolved_server_direcotry
+        # Content mappers start with `node` from the server's PATH. Put the Node.js that runs the server first, so
+        # that mappers use the same runtime even if it was installed by lsp_utils and is not on the system PATH.
+        node_directory = str(Path(context.variables['node_bin']).parent)
+        env_path: str | list[str] = context.configuration.env.get('PATH') or []
+        paths = env_path.split(os.pathsep) if isinstance(env_path, str) else list(env_path)
+        if node_directory not in paths:
+            context.configuration.env['PATH'] = os.pathsep.join([node_directory, *paths])
+
+    @classmethod
+    def _get_content_mapper_contributions(cls) -> list[ContentMapperContribution]:
+        if cls.content_mapper_contributions is None:
+            cls.content_mapper_contributions = find_content_mapper_contributions()
+        return cls.content_mapper_contributions
+
+    @classmethod
+    def set_content_mapper_location_async(cls, name: str, location: str) -> None:
+        if cls.content_mapper_locations.get(name) == location:
+            return
+        cls.content_mapper_locations[name] = location
+        for plugin in cls.initialized_plugins:
+            plugin._register_content_mappers_async()
+
+    @override
+    def on_initialized_async(self) -> None:
+        self.initialized_plugins.add(self)
+        self._register_content_mappers_async()
+
+    def _register_content_mappers_async(self) -> None:
+        """
+        Registers the contributed content mappers for files outside any tsconfig. The request replaces the previously
+        registered ones, so it includes all with a known location.
+        """
+        session = self.weaksession()
+        if not session or not session.config.initialization_options.get('runExternalCode'):
+            return
+        locations = self.content_mapper_locations
+        contributions = [c for c in self._get_content_mapper_contributions() if c['name'] in locations]
+        if not contributions:
+            return
+        server_contributions = [
+            server_contribution for c in contributions
+            if (server_contribution := to_server_contribution(c, locations[c['name']]))
+        ]
+        extensions = tuple(extension for c in contributions for extension in c['extensions'])
+        open_documents = [
+            {'uri': uri} for sb in session.session_buffers_async()
+            if (uri := sb.get_uri()) and uri.endswith(extensions)
+        ]
+        session.send_request_task(Request('custom/setContentMapperContributions', {
+            'contributions': server_contributions,
+            'openDocuments': open_documents,
+        })).then(self._on_set_content_mapper_contributions)
+
+    def _on_set_content_mapper_contributions(self, result: None | Error) -> None:
+        if isinstance(result, Error):
+            log(f'Failed to register content mappers: {result}')
+
+    def _get_typescript_package_json(self, session: Session) -> Path | None:
+        if self.resolved_server_direcotry:
+            return self.resolved_server_direcotry / 'node_modules' / 'typescript' / 'package.json'
+        server_path = cast(str, session.config.root_settings.get('server_path'))
+        # A custom server path points into a TypeScript installation, e.g. `node_modules/typescript/lib/tsc.js`.
+        for directory in Path(os.path.expanduser(server_path)).resolve().parents:
+            if (package_json := directory / 'package.json').is_file():
+                return package_json
+        return None
 
     def _show_typescript_version(self, result: InitializeResult) -> None:
         session = self.weaksession()
@@ -67,11 +250,26 @@ class LspTsgoPlugin(LspPlugin):
 
     def on_server_response_async(self, response: ServerResponse) -> None:
         if response['method'] == 'initialize':
-            self._show_typescript_version(cast('InitializeResult', response['result']))
+            self._show_typescript_version(response['result'])
             return
         if response['method'] == 'textDocument/hover':
             self._verbosity_hover_handler.on_hover_response(cast('VerbosityHover | None', response['result']))
             return
+        if response['method'] == 'custom/initializeAPISession':
+            self._on_initialize_api_session_response(response)
+            return
+
+    def _on_initialize_api_session_response(self, response: ServerResponse) -> None:
+        """
+        Other packages (e.g. LSP-vue) open a session of the TypeScript API with a `custom/initializeAPISession` request
+        to this server. Add the `package.json` of the TypeScript installation that runs this server to the response.
+        """
+        result = response['result']
+        session = self.weaksession()
+        if not isinstance(result, dict) or not session:
+            return
+        if package_json := self._get_typescript_package_json(session):
+            result['packageJsonPath'] = str(package_json)
 
     @uri_handler('verbosity')
     def handle_verbosity_uri(self, uri: DocumentUri, _: sublime.NewFileFlags) -> Promise[sublime.Sheet | None]:
@@ -87,6 +285,7 @@ def plugin_loaded() -> None:
 
 def plugin_unloaded() -> None:
     LspTsgoPlugin.unregister()
+    LspTsgoPlugin.content_mapper_contributions = None
 
 
 class HoverParamsWithVerbosity(HoverParams):
@@ -143,6 +342,11 @@ class VerbosityHoverHandler:
             view.run_command('lsp_hover', {'point': point})
 
 
+class LspTsgoSetContentMapperLocationCommand(sublime_plugin.WindowCommand):
+    """Called by the packages that contribute content mappers, to report where the content mapper is installed."""
+
+    def run(self, name: str, location: str) -> None:
+        sublime.set_timeout_async(lambda: LspTsgoPlugin.set_content_mapper_location_async(name, location))
 
 
 class LspTsgoGotoSourceDefinitionCommand(LspTextCommand):

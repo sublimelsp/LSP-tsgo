@@ -504,6 +504,13 @@
 		// Configure which watching strategies should be used to keep track of files and directories.
 		"typescript.tsserver.watchOptions": "vscode",
 	},
+	"initialization_options": {
+		// Run external code, such as the content mappers in the `contentMappers` field of a tsconfig and the ones that
+		// other packages contribute (e.g. Vue support in LSP-vue).
+		// WARNING: Content mappers of a tsconfig run code from the project's `node_modules`. Disable this for
+		// projects that you don't trust, for example in the project settings.
+		"runExternalCode": true,
+	},
 	// The path to the server binary used to start the language server.
 	// Use `auto` for the package to manage (install/update) the server automatically.
 	// NOTE: Change this instead of directly updating `command` - the `${server_path}` variable is dynamically resolved
