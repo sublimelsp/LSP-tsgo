@@ -38,6 +38,11 @@
                         "Error"
                       ],
                       "markdownDescription": "The verbosity of the server logs. Messages less severe than the selected level are not sent."
+                    },
+                    "runExternalCode": {
+                      "type": "boolean",
+                      "default": true,
+                      "markdownDescription": "Run external code, such as the content mappers in the `contentMappers` field of a tsconfig and the ones that other packages contribute (e.g. Vue support in LSP-vue).\n\n> [!WARNING]\n> Content mappers of a tsconfig run code from the project's `node_modules`. Disable this for projects that you don't trust, for example in the project settings."
                     }
                   }
                 },
