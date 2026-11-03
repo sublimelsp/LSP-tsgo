@@ -161,13 +161,6 @@ class LspTsgoPlugin(LspPlugin):
         )
         if resolved_server_direcotry:
             cls.resolved_server_direcotry = resolved_server_direcotry
-        # Content mappers start with `node` from the server's PATH. Put the Node.js that runs the server first, so
-        # that mappers use the same runtime even if it was installed by lsp_utils and is not on the system PATH.
-        node_directory = str(Path(context.variables['node_bin']).parent)
-        env_path: str | list[str] = context.configuration.env.get('PATH') or []
-        paths = env_path.split(os.pathsep) if isinstance(env_path, str) else list(env_path)
-        if node_directory not in paths:
-            context.configuration.env['PATH'] = os.pathsep.join([node_directory, *paths])
 
     @classmethod
     def _get_content_mapper_contributions(cls) -> list[ContentMapperContribution]:
